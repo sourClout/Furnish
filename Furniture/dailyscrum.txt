@@ -14,16 +14,13 @@
 
 2022/10/13 Xin Shi
 1. Done / not done since last scrum:
-- created server files(user models and routes) 
-- created login and regitration pages for user(admin and user)
-- did not connect the azure blob services to store the image
+- created Azure data 
+- created project model
 2. To do until next Scrum:
-- finish the connection to azure blob
-- finish the user manage page
-- create the custom dialog for user login
-- setup the database
+- start building project 
+- Github initialization
+- create Azure blog storage
 3. Need assistance / figure things out
-- find and test a way for the connection to azure.
 - could have try move data to azure database.
 
 
