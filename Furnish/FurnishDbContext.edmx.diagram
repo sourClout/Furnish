@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5cf84b4f65734ddda09abd3552727bb4" Name="Diagram1">
+        <EntityTypeShape EntityType="FurnishModel.Customer" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurnishModel.Employee" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurnishModel.OrderItem" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurnishModel.Order" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FurnishModel.Product" Width="1.5" PointX="7" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="FurnishModel.FK_Orders_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="FurnishModel.FK_Orders_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="FurnishModel.FK_OrderItems_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="FurnishModel.FK_OrderItems_Products" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

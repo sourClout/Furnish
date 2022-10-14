@@ -1,0 +1,37 @@
+<< current date goes here >>
+1. What I have done / not done since last Scrum?
+2. What I plan to do from this scrum to next? (next 24 hours)
+3. Where do I need assistance? What do I need to figure out?
+
+2022/10/13 Anton
+1. Done / not done since last scrum:
+- finalized project proposal
+2. To do until next Scrum:
+- set up the GitHub repository for the project
+- define user stories for the trello board
+- setup the database
+3. Need assistance / figure things out
+
+2022/10/13 Xin Shi
+1. Done / not done since last scrum:
+- created Azure data 
+- created project model
+2. To do until next Scrum:
+- start building project 
+- Github initialization
+- create Azure blog storage
+3. Need assistance / figure things out
+- could have try move data to azure database.
+
+
+2022/10/13 Alex
+1. Done / not done since last scrum:
+- Researched c# .Net furniture project specifications and material design. 
+2. To do until next Scrum:
+- start building project 
+- Trello 
+- Github initialization
+3. Need assistance / figure things out
+- material design
+- BLOB image storage
+- textarea data type vs string 
