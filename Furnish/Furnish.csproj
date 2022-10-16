@@ -80,6 +80,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="RoleEnum.cs">
+      <DependentUpon>FurnishDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StatusEnum.cs">
+      <DependentUpon>FurnishDbContext.tt</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

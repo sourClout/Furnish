@@ -24,5 +24,20 @@ namespace Furnish
         {
             InitializeComponent();
         }
+
+        private void BtnOrders_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnProducts_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnCustomers_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

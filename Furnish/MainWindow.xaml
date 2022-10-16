@@ -13,15 +13,56 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid >
-        <StackPanel>
-            <materialDesign:Card Padding="32" Margin="16">
-                <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}">My First Material Design App</TextBlock>
-            </materialDesign:Card>
-          
+        Title="MainWindow" Height="450" Width="600" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" BorderBrush="Gray" BorderThickness="0.5" Background="#FF8522Bd"  >
+        <Menu>
+                <MenuItem Header="_File" Foreground="White">
+                <MenuItem Header="_Export"/>
+                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Save"/>
+                <Separator/>
+                <MenuItem Header="_Exit"/>
+            </MenuItem>
+        </Menu>
+        </Border>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="TbkStatus"/>
+            </StatusBarItem>
+        </StatusBar>
+        <Border DockPanel.Dock="Left" BorderBrush="Gray" BorderThickness="0.5" Background="Black">
+            <Grid Width="170" Margin="0,0,0,0" Background="#FFF1F0F3">
 
-        </StackPanel>
-      
-    </Grid>
+                <Button Name="BtnCustomers" HorizontalAlignment="Left" Margin="14,70,0,0" VerticalAlignment="Top" Width="140" Click="BtnCustomers_Click">
+                    <Grid Width="130">
+                        <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="CUSTOMERS" />
+                    </Grid>
+                </Button>
+                <Button Name="BtnProducts" HorizontalAlignment="Left" Margin="14,137,0,0" VerticalAlignment="Top" Width="140" Click="BtnProducts_Click">
+                    <Grid Width="130">
+                        <materialDesign:PackIcon Kind="TableFurniture" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="PRODUCTS" />
+                    </Grid>
+                </Button>
+                <Button  Name="BtnOrders" HorizontalAlignment="Left" Margin="14,210,0,0" VerticalAlignment="Top" Width="140" Click="BtnOrders_Click">
+                    <Grid Width="130">
+                        <materialDesign:PackIcon Kind="Invoice" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="ORDERS" />
+                    </Grid>
+                </Button>
+
+            </Grid>
+        </Border>
+        <ListView Background="#FFC8C8C8">
+            <ListView.View >
+                <GridView >
+                    
+
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+    </DockPanel>
 </Window>
