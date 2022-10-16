@@ -24,7 +24,7 @@ namespace Furnish
         public string name { get; set; }
         public string email { get; set; }
         public string password { get; set; }
-        public int role { get; set; }
+        public RoleEnum role { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }

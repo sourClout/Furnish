@@ -24,7 +24,7 @@ namespace Furnish
         public int empId { get; set; }
         public int cusId { get; set; }
         public System.DateTime orderDate { get; set; }
-        public int status { get; set; }
+        public StatusEnum status { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }
