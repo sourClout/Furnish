@@ -19,12 +19,12 @@
 
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="Green" Offset="0"/>
+                    <GradientStop Color="Purple" Offset="0"/>
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
-            
-            
+
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
@@ -51,14 +51,34 @@
                             Cursor="Arrow"
                             Grid.Column="1"
                             Click="btnMinimize_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#28AEED"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#278BEF"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
 
                     </Button>
-                    
-                    
-                    
-                    
-                    
-                    
+
+
+
+
+
+
                 </Grid>
                 <Grid Grid.Row="1">
                     <TextBox HorizontalAlignment="Left" Margin="271,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" Height="39"
@@ -67,16 +87,16 @@
                     <TextBox HorizontalAlignment="Left" Margin="271,259,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" Height="39" Grid.ColumnSpan="2"/>
                     <Label Content="User Name:" HorizontalAlignment="Left" Margin="271,124,0,0" VerticalAlignment="Top" FontSize="16" Grid.ColumnSpan="2"/>
                     <Label Content="Password:" HorizontalAlignment="Left" Margin="271,217,0,0" VerticalAlignment="Top" FontSize="16" Grid.ColumnSpan="2"/>
-                    <Button Content="Login" HorizontalAlignment="Left" Margin="73,340,0,0" VerticalAlignment="Top" Width="150" Height="50" FontSize="16" Grid.Column="1"/>
+                    <Button Content="Login" HorizontalAlignment="Left" Margin="351,341,0,0" VerticalAlignment="Top" Width="150" Height="50" FontSize="16"/>
                     <TextBlock Text="Furnish A.x.A"
                     Foreground="red"
                     FontSize="25"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="34,68,0,328" Grid.Column="1"/>
+                    HorizontalAlignment="Left" Margin="317,56,0,340"/>
 
                 </Grid>
-                
+
             </Grid>
 
 
@@ -98,7 +118,9 @@
             </Grid.RowDefinitions>
 
             <Button Margin="20 28 0 35" Style="{StaticResource  topButton}">
-                --><!--<iconPacks:PackIconMaterial   Width="15" Height="15" Kind ="Menu"/>--><!--
+                -->
+        <!--<iconPacks:PackIconMaterial   Width="15" Height="15" Kind ="Menu"/>-->
+        <!--
             </Button>
             <Image HorizontalAlignment="Left" Height="100" Margin="85,28,0,0" VerticalAlignment="Top" Width="100" Source="/download.jpg" Grid.RowSpan="2" Grid.Column="1">
                 <Image.OpacityMask>
