@@ -59,3 +59,13 @@
 - material design further integration
 - BLOB image storage
 - textarea data type vs string 
+
+2022/10/17 Alex
+1. Done / not done since last scrum:
+- Started Homepage created desing and buttons for categories
+2. To do until next Scrum:
+- start building products custom dialogue and code
+3. Need assistance / figure things out
+- material design further integration
+- BLOB image storage
+- textarea data type vs string 
