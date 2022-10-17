@@ -47,3 +47,15 @@
 - BLOB image storage
 - textarea data type vs string 
 
+2022/10/17 XinShi
+1. Done / not done since last scrum:
+- Helped install Database First entity framework 
+- Installed the Azure container blob
+- Installed Material Design and researched use
+2. To do until next Scrum:
+-  Material Design has something wrong, to fix it today
+-  Continue building logig page
+3. Need assistance / figure things out
+- material design further integration
+- BLOB image storage
+- textarea data type vs string 
