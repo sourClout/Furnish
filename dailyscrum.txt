@@ -69,3 +69,13 @@
 - material design further integration
 - BLOB image storage
 - textarea data type vs string 
+
+2022/10/17 Anton
+1. Done / not done since last scrum:
+- setup the database
+- defined user stories for the trello board
+- set up the GitHub repository for the project
+2. To do until next Scrum:
+ - create custom dialogue "Customers"
+3. Need assistance / figure things out
+-
