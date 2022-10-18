@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Furnish" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"  WindowStartupLocation="CenterScreen" 
+        mc:Ignorable="d"  WindowStartupLocation="CenterScreen" Loaded="Window_Loaded"
         Title="Register" Height="450" Width="600">
     <Border  CornerRadius="20" >
 
@@ -65,9 +65,13 @@
 
 
 
-
+            <Label Content="Status: " HorizontalAlignment="Left" Margin="222,39,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <!--<ComboBox Name="ComboStatus" SelectedValuePath="Content" HorizontalAlignment="Left" Margin="286,43,0,0" VerticalAlignment="Top" Width="146" FontSize="16">
+                <ComboBoxItem Name="ComboUser" IsSelected="True">User</ComboBoxItem>
+                <ComboBoxItem>Admin</ComboBoxItem>
+            </ComboBox>-->
             <Label Content="Password:" HorizontalAlignment="Left" Margin="195,224,0,0" VerticalAlignment="Top" FontSize="16"/>
-            <Button x:Name ="Submit" Content="Submit" HorizontalAlignment="Left" Margin="170,342,0,0" VerticalAlignment="Top" Width="100" Height="40" FontSize="16" Click="Button_Click_1" />
+            <Button x:Name ="Submit" Content="Submit" HorizontalAlignment="Left" Margin="170,342,0,0" VerticalAlignment="Top" Width="100" Height="40" FontSize="16" Click="Submit_Click" />
 
             <TextBlock x:Name ="errormessage"  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="247" Height="25" Margin="195,253,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C"  />
             <Label Content="Email:" HorizontalAlignment="Left" Margin="195,160,0,0" VerticalAlignment="Top" FontSize="16"/>
