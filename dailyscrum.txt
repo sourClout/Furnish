@@ -102,3 +102,12 @@
 3.Need assistance / figure things out
 - Pass the data from the login page to home page
 - textarea data type vs string 
+
+2022/10/18 Anton
+1. Done / not done since last scrum:
+ - create custom dialog "Customers"
+2. To do until next Scrum:
+ - create custom dialog "AddCustomer"
+ - create custom dialog "UpdateCustomer"
+ - implement "Delete Customer" in customer dialog
+3. Need assistance / figure things out
