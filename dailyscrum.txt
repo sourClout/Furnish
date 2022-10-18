@@ -79,3 +79,13 @@
  - create custom dialogue "Customers"
 3. Need assistance / figure things out
 -
+
+2022/10/17 Alex
+1. Done / not done since last scrum:
+- Started Products view list page and add/edit products
+2. To do until next Scrum:
+- Finish Products view list page and add/edit products
+- Start work collaborating on orders
+3. Need assistance / figure things out
+- BLOB image storage
+- Roles user and admin
