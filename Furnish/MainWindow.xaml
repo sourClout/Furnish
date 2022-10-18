@@ -7,24 +7,25 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
-        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterScreen" 
         Title="MainWindow" Height="450" Width="600" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
     <DockPanel>
         <Border DockPanel.Dock="Top" BorderBrush="Gray" BorderThickness="0.5" Background="#FF8522Bd"  >
-        <Menu>
+            <Menu>
                 <MenuItem Header="_File" Foreground="White">
-                <MenuItem Header="_Export"/>
-                <MenuItem Header="_Open"/>
-                <MenuItem Header="_Save"/>
-                <Separator/>
-                <MenuItem Header="_Exit"/>
-            </MenuItem>
-        </Menu>
+                    <MenuItem Header="_Export"/>
+                    <MenuItem Header="_Open"/>
+                    <MenuItem Header="_Save"/>
+                    <Separator/>
+                    <MenuItem Header="_Exit"/>
+                </MenuItem>
+            </Menu>
+
         </Border>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
@@ -33,7 +34,6 @@
         </StatusBar>
         <Border DockPanel.Dock="Left" BorderBrush="Gray" BorderThickness="0.5" Background="Black">
             <Grid Width="170" Margin="0,0,0,0" Background="#FFF1F0F3">
-
                 <Button Name="BtnCustomers" HorizontalAlignment="Left" Margin="14,70,0,0" VerticalAlignment="Top" Width="140" Click="BtnCustomers_Click">
                     <Grid Width="130">
                         <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center"/>
@@ -53,16 +53,31 @@
                     </Grid>
                 </Button>
 
+
+
             </Grid>
         </Border>
-        <ListView Background="#FFC8C8C8">
-            <ListView.View >
-                <GridView >
-                    
+        <Border DockPanel.Dock="right" BorderBrush="Gray" BorderThickness="0.5" Background="Black">
+            <Grid Margin="0,0,0,0" Background="#FFF1F0F3">
+                <TextBox x:Name="TbxUserName" TextWrapping="Wrap" Text="TbxUserName" Width="100" Height="28" Margin="47,36,281,0" VerticalAlignment="Top" TextChanged="TbxUserName_TextChanged"/>
+                <TextBox x:Name="TbxEmail" TextWrapping="Wrap" Text="TbxEmail" Width="100" Height="28" Margin="47,82,281,0" VerticalAlignment="Top" TextChanged="TbxUserName_TextChanged"/>
+                <Button  Name="BtnLogin" HorizontalAlignment="Left" Margin="269,263,0,0" VerticalAlignment="Top" Width="140" Click="BtnLogin_Click">
+                    <Grid Width="130">
+                        <materialDesign:PackIcon Kind="Invoice" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="Log in" />
+                    </Grid>
+                </Button>
+                <Button  Name="BtnRegister" HorizontalAlignment="Left" Margin="269,311,0,0" VerticalAlignment="Top" Width="140" Click="BtnRegister_Click">
+                    <Grid Width="130">
+                        <materialDesign:PackIcon Kind="Invoice" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="Register" />
+                    </Grid>
+                </Button>
+            </Grid>
+        </Border>
 
-                </GridView>
-            </ListView.View>
 
-        </ListView>
+
+
     </DockPanel>
 </Window>

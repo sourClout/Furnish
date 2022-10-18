@@ -1,0 +1,85 @@
+﻿<Window x:Class="Furnish.ProductsViewDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Furnish"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        mc:Ignorable="d" Loaded="Window_Loaded"
+         WindowStartupLocation="CenterOwner"
+        Title="ProductsViewDlg" Height="450" Width="900">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" BorderBrush="Gray" BorderThickness="0.5" Background="#FF8522Bd"  >
+            <Menu>
+                <MenuItem Header="_File" Foreground="White">
+                    <MenuItem Header="_Export"/>
+                    <MenuItem Header="_Open"/>
+                    <MenuItem Header="_Save"/>
+                    <Separator/>
+                    <MenuItem Header="_Exit"/>
+                </MenuItem>
+                <MenuItem Header="_Add Customer" Foreground="White"/>
+                <MenuItem Header="_Delete Customer" Foreground="White"/>
+            </Menu>
+        </Border>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="TbkStatus"/>
+            </StatusBarItem>
+        </StatusBar>
+        <Border DockPanel.Dock="Left" BorderBrush="Gray" BorderThickness="0.5" Background="Black">
+            <Grid Width="170" Margin="0,0,0,0" Background="#FFF1F0F3">
+
+                <Button Name="BtnAddProducts" HorizontalAlignment="Left" Margin="14,70,0,0" VerticalAlignment="Top" Width="140" Click="BtnAddProducts_Click">
+                    <Grid Width="130">
+                        <materialDesign:PackIcon Kind="Add" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="ADD" Height="17" VerticalAlignment="Top" />
+                    </Grid>
+                </Button>
+                <Button Name="BtnDeleteProducts" HorizontalAlignment="Left" Margin="14,137,0,0" VerticalAlignment="Top" Width="140" Click="BtnDeleteProducts_Click">
+                    <Grid Width="130">
+                        <materialDesign:PackIcon Kind="Delete" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="DELETE" />
+                    </Grid>
+                </Button>
+                <Button  Name="BtnSaveProducts" HorizontalAlignment="Left" Margin="14,210,0,0" VerticalAlignment="Top" Width="140" Click="BtnSaveProducts_Click">
+                    <Grid Width="130">
+                        <materialDesign:PackIcon Kind="ContentSave" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="SAVE" />
+                    </Grid>
+                </Button>
+
+            </Grid>
+        </Border>
+        <Border>
+            <Grid>
+            <ListView  Name="LvProd" SelectionChanged="LvProd_SelectionChanged" SelectionMode="Single" MouseDoubleClick="LvProd_MouseDoubleClick">
+                <ListView.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                    </Style>
+                </ListView.Resources>
+                <ListView.View >
+                <GridView>
+                    <GridViewColumn Header="Image" Width="120" DisplayMemberBinding="{Binding imageUrl}" />
+                    <GridViewColumn Header="ID" Width="90" DisplayMemberBinding="{Binding id}" />
+                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding name}" />
+                    <GridViewColumn Header="Description" Width="130" DisplayMemberBinding="{Binding description}"  />
+                    <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding price}"  />
+                        <GridViewColumn Header="Quantity" Width="120" DisplayMemberBinding="{Binding qtyAvailable}"  />
+
+                    </GridView>
+            </ListView.View>
+
+        </ListView>
+        </Grid>
+        </Border>
+    </DockPanel>
+</Window>

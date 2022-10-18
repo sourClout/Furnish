@@ -26,7 +26,16 @@ namespace Furnish
         public string imageUrl { get; set; }
         public decimal price { get; set; }
         public int qtyAvailable { get; set; }
-    
+
+        public Product(string _name, string _description, string _imageUrl, decimal _price, int _qtyAvailable)
+        {
+            this.name = _name;
+            this.description = _description;
+            this.imageUrl = _imageUrl;
+            this.price = _price;
+            this.qtyAvailable = _qtyAvailable;
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderItem> OrderItems { get; set; }
     }

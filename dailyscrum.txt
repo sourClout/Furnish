@@ -47,3 +47,67 @@
 - BLOB image storage
 - textarea data type vs string 
 
+2022/10/17 XinShi
+1. Done / not done since last scrum:
+- Helped install Database First entity framework 
+- Installed the Azure container blob
+- Installed Material Design and researched use
+2. To do until next Scrum:
+-  Material Design has something wrong, to fix it today
+-  Continue building logig page
+3. Need assistance / figure things out
+- material design further integration
+- BLOB image storage
+- textarea data type vs string 
+
+2022/10/17 Alex
+1. Done / not done since last scrum:
+- Started Homepage created desing and buttons for categories
+2. To do until next Scrum:
+- start building products custom dialogue and code
+3. Need assistance / figure things out
+- material design further integration
+- BLOB image storage
+- textarea data type vs string 
+
+2022/10/17 Anton
+1. Done / not done since last scrum:
+- setup the database
+- defined user stories for the trello board
+- set up the GitHub repository for the project
+2. To do until next Scrum:
+ - create custom dialogue "Customers"
+3. Need assistance / figure things out
+-
+
+2022/10/18 Alex
+1. Done / not done since last scrum:
+- Started Products view list page and add/edit products
+2. To do until next Scrum:
+- Finish Products view list page and add/edit products
+- Start work collaborating on orders
+3. Need assistance / figure things out
+- BLOB image storage
+- Roles user and admin
+
+
+2022/10/18 XinShi
+1. Done / not done since last scrum:
+- Done with the login page; 
+- Finished the Material design
+- Designed the register page
+2.To do until next Scrum:
+- Continue the code about the register.
+- Fix the login page errormessage box
+3.Need assistance / figure things out
+- Pass the data from the login page to home page
+- textarea data type vs string 
+
+2022/10/18 Anton
+1. Done / not done since last scrum:
+ - create custom dialog "Customers"
+2. To do until next Scrum:
+ - create custom dialog "AddCustomer"
+ - create custom dialog "UpdateCustomer"
+ - implement "Delete Customer" in customer dialog
+3. Need assistance / figure things out
