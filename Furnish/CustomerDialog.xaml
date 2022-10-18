@@ -16,7 +16,7 @@
         mc:Ignorable="d" ResizeMode="NoResize" Loaded="Window_Loaded"
         Title="CustomerDialog" Height="450" Width="600" WindowStartupLocation="CenterOwner">
     <Grid>
-        <ListView Name="LvCustomers" HorizontalAlignment="Left" Height="263" Margin="10,48,0,0" VerticalAlignment="Top" Width="580" SelectionChanged="LvCustomers_SelectionChanged" >
+        <ListView Name="LvCustomers" HorizontalAlignment="Left" Height="263" Margin="10,48,0,0" VerticalAlignment="Top" Width="580" SelectionChanged="LvCustomers_SelectionChanged" MouseDoubleClick="LvCustomers_MouseDoubleClick" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Id" Width="80" DisplayMemberBinding="{Binding id}" />
