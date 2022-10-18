@@ -5,8 +5,13 @@
              xmlns:ICon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        
-        <Style x:Key ="topButton"  TargetType = "Button">
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple" SecondaryColor="Lime" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        <!--<Style x:Key ="topButton"  TargetType = "Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="Gray"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -33,7 +38,7 @@
 
 
 
-        </Style>
+        </Style>-->
           
     </Application.Resources>
 </Application>

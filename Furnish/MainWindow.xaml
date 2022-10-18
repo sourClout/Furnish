@@ -3,136 +3,81 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Furnish"
-        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-                 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent" >
-    <Border Background="AntiqueWhite" CornerRadius="20" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
-        <Border  CornerRadius="10" >
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="Red" Offset="0"/>
-
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-
-
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="Purple" Offset="0"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-
-
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="25"/>
-                        <ColumnDefinition Width="25"/>
-                        <ColumnDefinition Width="5"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="LOG IN"
-                               FontSize="16"
-                               Grid.Column="0"
-                               VerticalAlignment="Center"
-                               Margin="10,0,0,0"/>
-                    <Button x:Name="btnMinimize"  
-                            BorderThickness="0"
-                            Content="-"
-                            Foreground="White"
-                            FontSize="16"
-                            Cursor="Arrow"
-                            Grid.Column="1"
-                            Click="btnMinimize_Click">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#28AEED"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#278BEF"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="18" Height="18"
-                                        CornerRadius="9"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-
-                    </Button>
-
-
-
-
-
-
-                </Grid>
-                <Grid Grid.Row="1">
-                    <TextBox HorizontalAlignment="Left" Margin="271,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" Height="39"
-                     
-                    Grid.ColumnSpan="2"/>
-                    <TextBox HorizontalAlignment="Left" Margin="271,259,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" Height="39" Grid.ColumnSpan="2"/>
-                    <Label Content="User Name:" HorizontalAlignment="Left" Margin="271,124,0,0" VerticalAlignment="Top" FontSize="16" Grid.ColumnSpan="2"/>
-                    <Label Content="Password:" HorizontalAlignment="Left" Margin="271,217,0,0" VerticalAlignment="Top" FontSize="16" Grid.ColumnSpan="2"/>
-                    <Button Content="Login" HorizontalAlignment="Left" Margin="351,341,0,0" VerticalAlignment="Top" Width="150" Height="50" FontSize="16"/>
-                    <TextBlock Text="Furnish A.x.A"
-                    Foreground="red"
-                    FontSize="25"
-                    FontWeight="Medium"
-                    FontFamily="Montserrat"
-                    HorizontalAlignment="Left" Margin="317,56,0,340"/>
-
-                </Grid>
-
-            </Grid>
-
-
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="450" Width="600" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" BorderBrush="Gray" BorderThickness="0.5" Background="#FF8522Bd"  >
+            <Menu>
+                <MenuItem Header="_File" Foreground="White">
+                    <MenuItem Header="_Export"/>
+                    <MenuItem Header="_Open"/>
+                    <MenuItem Header="_Save"/>
+                    <Separator/>
+                    <MenuItem Header="_Exit"/>
+                </MenuItem>
+            </Menu>
 
         </Border>
-        <!--<Grid>
-            <Grid.Background>
-                <ImageBrush/>
-            </Grid.Background>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="*"/>
-
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <Button Margin="20 28 0 35" Style="{StaticResource  topButton}">
-                -->
-        <!--<iconPacks:PackIconMaterial   Width="15" Height="15" Kind ="Menu"/>-->
-        <!--
-            </Button>
-            <Image HorizontalAlignment="Left" Height="100" Margin="85,28,0,0" VerticalAlignment="Top" Width="100" Source="/download.jpg" Grid.RowSpan="2" Grid.Column="1">
-                <Image.OpacityMask>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black"/>
-                        <GradientStop Color="#FF712B2B" Offset="1"/>
-                    </LinearGradientBrush>
-                </Image.OpacityMask>
-            </Image>
-        </Grid>-->
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="TbkStatus"/>
+            </StatusBarItem>
+        </StatusBar>
+        <Border DockPanel.Dock="Left" BorderBrush="Gray" BorderThickness="0.5" Background="Black">
+            <Grid Width="170" Margin="0,0,0,0" Background="#FFF1F0F3">
+                <Button Name="BtnCustomers" HorizontalAlignment="Left" Margin="14,70,0,0" VerticalAlignment="Top" Width="140" Click="BtnCustomers_Click">
+                    <Grid Width="130">
+                        <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="CUSTOMERS" />
+                    </Grid>
+                </Button>
+                <Button Name="BtnProducts" HorizontalAlignment="Left" Margin="14,137,0,0" VerticalAlignment="Top" Width="140" Click="BtnProducts_Click">
+                    <Grid Width="130">
+                        <materialDesign:PackIcon Kind="TableFurniture" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="PRODUCTS" />
+                    </Grid>
+                </Button>
+                <Button  Name="BtnOrders" HorizontalAlignment="Left" Margin="14,210,0,0" VerticalAlignment="Top" Width="140" Click="BtnOrders_Click">
+                    <Grid Width="130">
+                        <materialDesign:PackIcon Kind="Invoice" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="ORDERS" />
+                    </Grid>
+                </Button>
 
 
 
-    </Border>
+            </Grid>
+        </Border>
+        <Border DockPanel.Dock="right" BorderBrush="Gray" BorderThickness="0.5" Background="Black">
+            <Grid Margin="0,0,0,0" Background="#FFF1F0F3">
+                <TextBox x:Name="TbxUserName" TextWrapping="Wrap" Text="TbxUserName" Width="100" Height="28" Margin="47,36,281,0" VerticalAlignment="Top" TextChanged="TbxUserName_TextChanged"/>
+                <TextBox x:Name="TbxEmail" TextWrapping="Wrap" Text="TbxEmail" Width="100" Height="28" Margin="47,82,281,0" VerticalAlignment="Top" TextChanged="TbxUserName_TextChanged"/>
+                <Button  Name="BtnLogin" HorizontalAlignment="Left" Margin="269,263,0,0" VerticalAlignment="Top" Width="140" Click="BtnLogin_Click">
+                    <Grid Width="130">
+                        <materialDesign:PackIcon Kind="Invoice" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="Log in" />
+                    </Grid>
+                </Button>
+                <Button  Name="BtnRegister" HorizontalAlignment="Left" Margin="269,311,0,0" VerticalAlignment="Top" Width="140" Click="BtnRegister_Click">
+                    <Grid Width="130">
+                        <materialDesign:PackIcon Kind="Invoice" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="Register" />
+                    </Grid>
+                </Button>
+            </Grid>
+        </Border>
+
+
+
+
+    </DockPanel>
 </Window>

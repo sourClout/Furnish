@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using MahApps.Metro.Controls.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,49 +15,50 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Furnish
-{
+{    /// <summary>    /// Interaction logic for MainWindow.xaml    /// </summary>    
+    public partial class MainWindow : Window    {        
+        
+    public MainWindow()        {            InitializeComponent();        }
 
-    public partial class MainWindow : Window
+    private void BtnOrders_Click(object sender, RoutedEventArgs e)
     {
-        public MainWindow()
+
+    }
+
+    private void BtnProducts_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void BtnCustomers_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
+
+            Login dialog = new Login(); 
+            dialog.Owner = this;
+  
+           
+            if (dialog.ShowDialog() == true)
+                TbxUserName.Text = dialog.Name;
+           
         }
 
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if(e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
+    private void BtnRegister_Click(object sender, RoutedEventArgs e)
+    {
+            Register dialog = new Register();
+            dialog.Owner = this;
+            dialog.ShowDialog();
         }
 
-
-        private bool IsMaximized = false;
-
-        private void Border_MouseLeftButtonDown (object sender, MouseButtonEventArgs e)
+        private void TbxUserName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (e.ClickCount == 2)
-            {
-                if (IsMaximized)
-                {
-                    this.WindowState = WindowState.Normal;
-                    this.Width = 1080;
-                    this.Height = 720;
 
-                    IsMaximized = false;
-
-                }
-                else
-                {
-                    this.WindowState = WindowState.Maximized;
-                    IsMaximized=true;
-                }
-
-
-
-            }
         }
     }
 }
+
