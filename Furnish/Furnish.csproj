@@ -190,7 +190,7 @@
     </Compile>
     <Compile Include="ProductsViewDlg.xaml.cs">
       <DependentUpon>ProductsViewDlg.xaml</DependentUpon>
-      
+      </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -245,11 +245,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    
     <Page Include="ProductsViewDlg.xaml">
+    <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Register.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Order.cs">
