@@ -25,6 +25,20 @@ namespace Furnish
             InitializeComponent();
         }
 
+        //private void Window_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        Globals.dbContext = new FurnishDbConnection();
+                
+        //    }
+        //    catch (SystemException ex)
+        //    {
+        //        MessageBox.Show(this, "Unable to access the database:\n" + ex.Message, "Fatal database error", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        Environment.Exit(1);
+        //    }
+        //}
+
         private void BtnOrders_Click(object sender, RoutedEventArgs e)
         {
 
@@ -32,12 +46,17 @@ namespace Furnish
 
         private void BtnProducts_Click(object sender, RoutedEventArgs e)
         {
-
+            ProductsViewDlg dialog = new ProductsViewDlg();
+            dialog.Owner = this;
+            dialog.ShowDialog();
+            
         }
 
         private void BtnCustomers_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
+       
     }
 }
