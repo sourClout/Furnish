@@ -46,8 +46,10 @@ namespace Furnish
 
     private void BtnCustomers_Click(object sender, RoutedEventArgs e)
     {
-
-    }
+            CustomerDialog dialog = new CustomerDialog();
+            dialog.Owner = this;
+            dialog.ShowDialog();
+        }
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
 
@@ -76,9 +78,7 @@ namespace Furnish
 
         private void TbxUserName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CustomerDialog custDialog = new CustomerDialog();
-            custDialog.Owner = this;
-            custDialog.ShowDialog();
+
         }
 
        
