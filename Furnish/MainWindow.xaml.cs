@@ -37,7 +37,9 @@ namespace Furnish
 
         private void BtnCustomers_Click(object sender, RoutedEventArgs e)
         {
-
+            CustomerDialog custDialog = new CustomerDialog();
+            custDialog.Owner = this;
+            custDialog.ShowDialog();
         }
     }
 }
