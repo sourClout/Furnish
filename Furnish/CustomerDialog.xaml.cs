@@ -32,6 +32,7 @@ namespace Furnish
             {
                 Globals.dbContext = new FurnishDbConnection();
                 LvCustomers.ItemsSource = Globals.dbContext.Customers.ToList();
+                disableButtons();
             }
             catch (SystemException ex)
             {
@@ -40,12 +41,11 @@ namespace Furnish
             }
         }
 
-        
+ 
         private void LvCustomers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Customer selectedCustomer = LvCustomers.SelectedItem as Customer;
-            BtnUpdate.IsEnabled = (selectedCustomer != null);
-            BtnDelete.IsEnabled = (selectedCustomer != null);
+            
+            disableButtons();
 
             /*
             if (selectedCustomer == null)
@@ -59,18 +59,37 @@ namespace Furnish
                 TbxPhone.Text = selectedCustomer.phone;
             }
             */
-        }
         
+        }
+
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             CustomerAddDialog custAddDialog = new CustomerAddDialog();
             custAddDialog.Owner = this;
-            custAddDialog.ShowDialog();
+
+            if (custAddDialog.ShowDialog() == true)
+            {
+                LvCustomers.ItemsSource = Globals.dbContext.Customers.ToList();
+            }
+            
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            Customer chosenCustomer = LvCustomers.SelectedItem as Customer;
+            if (chosenCustomer == null) return;
+            var result = MessageBox.Show(this, "Are you sure you want to delete this customer?", "Confirm deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result != MessageBoxResult.Yes) return;
+            try
+            {
+                Globals.dbContext.Customers.Remove(chosenCustomer);
+                Globals.dbContext.SaveChanges();
+                LvCustomers.ItemsSource = Globals.dbContext.Customers.ToList();
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Unable to access the database:\n" + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
@@ -82,6 +101,29 @@ namespace Furnish
         {
 
         }
+
+        private void disableButtons()
+        {
+            Customer selectedCustomer = LvCustomers.SelectedItem as Customer;
+            BtnUpdate.IsEnabled = (selectedCustomer != null);
+            BtnDelete.IsEnabled = (selectedCustomer != null);
+        }
+
+        private void LvCustomers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Customer chosenCustomer = LvCustomers.SelectedItem as Customer;
+            if (chosenCustomer == null) return;
+            CustomerAddDialog custAddDialog = new CustomerAddDialog(chosenCustomer);
+            custAddDialog.Owner = this;
+
+ 
+
+            if (custAddDialog.ShowDialog() == true)
+            {
+                LvCustomers.ItemsSource = Globals.dbContext.Customers.ToList();
+            }
+        }
+
 
         /*
         private void ResetFields()
