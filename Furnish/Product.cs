@@ -11,7 +11,9 @@ namespace Furnish
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.SqlTypes;
+    using System.Windows.Media;
+
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,11 +29,23 @@ namespace Furnish
         public decimal price { get; set; }
         public int qtyAvailable { get; set; }
 
+        
+
+        //public ImageSource image { get; set; }
+
         public Product(string _name, string _description, string _imageUrl, decimal _price, int _qtyAvailable)
         {
             this.name = _name;
             this.description = _description;
             this.imageUrl = _imageUrl;
+            this.price = _price;
+            this.qtyAvailable = _qtyAvailable;
+        }
+
+        public Product(string _name, string _description, decimal _price, int _qtyAvailable)
+        {
+            this.name = _name;
+            this.description = _description;
             this.price = _price;
             this.qtyAvailable = _qtyAvailable;
         }
