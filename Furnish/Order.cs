@@ -25,10 +25,20 @@ namespace Furnish
         public int cusId { get; set; }
         public System.DateTime orderDate { get; set; }
         public StatusEnum status { get; set; }
-    
+
+
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderItem> OrderItems { get; set; }
+
+        public Order(int _empId, int _custId, DateTime _orderDate, StatusEnum _status)
+        {
+            empId = _empId;
+            cusId = _custId;
+            orderDate = _orderDate;
+            status = _status;
+        }
+
     }
 }

@@ -140,7 +140,7 @@ namespace Furnish
             var tbx = sender as TextBox;
             if (tbx.Text != "")
             {
-                var filteredList = Globals.dbContext.Customers.ToList().Where(x => x.name.ToLower().Contains(tbx.Text.ToLower()));
+                var filteredList = Globals.dbContext.Customers.ToList().Where(x => x.name.ToLower().Contains(tbx.Text.ToLower()) || x.phone.Contains(tbx.Text));
                 LvCustomers.ItemsSource = null;
                 LvCustomers.ItemsSource = filteredList;
             }

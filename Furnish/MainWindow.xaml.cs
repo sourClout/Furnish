@@ -37,10 +37,9 @@ namespace Furnish
 
     private void BtnOrders_Click(object sender, RoutedEventArgs e)
     {
-
-        
-
-    
+            OrderDialog dialog = new OrderDialog();
+            dialog.Owner = this;
+            dialog.ShowDialog();
     }
 
  
@@ -121,7 +120,6 @@ namespace Furnish
             Globals.dbContext.SaveChanges();
             TbkStatus.Text = "Employee deleted";
         }
-
 
     }
 }
