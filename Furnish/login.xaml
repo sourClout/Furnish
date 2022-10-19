@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Furnish" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" WindowStartupLocation="CenterScreen" 
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"  
         Title="Login" Height="450" Width="600">
     <Border  CornerRadius="20" >
         <Border.BorderBrush>

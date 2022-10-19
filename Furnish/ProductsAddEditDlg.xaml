@@ -39,8 +39,9 @@
         <Button Name="BtSave" IsDefault="True" Click="BtSave_Click" Content="Save" HorizontalAlignment="Left" Margin="56,376,0,0" VerticalAlignment="Top" Width="92"/>
         <Button IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Margin="182,376,0,0" VerticalAlignment="Top" Width="92"/>
         <Grid>
-            <Button Content="Click to Upload" Click="Button_Click" Width="100" Height="100" Margin="120,227,80,57" FontSize="10" Background="LightGray" BorderBrush="Purple"/>
-            <Image x:Name="imagePic" Stretch="Uniform" Height="100" Margin="145,252,105,0" VerticalAlignment="Top" Width="100"/>
+            <Button Content="Click to Upload" Click="uploadButton_Click" Width="100" Height="100" Margin="120,227,80,57" FontSize="10" Background="LightGray" BorderBrush="Purple"/>
+            <Image x:Name="pictureBox1" Stretch="Uniform" Height="100" Margin="145,252,105,0" VerticalAlignment="Top" Width="100"/>
+            <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="20,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104"/>
         </Grid>
 
     </Grid>

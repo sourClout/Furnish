@@ -28,20 +28,11 @@ namespace Furnish
 
 
         Employee currEmp;
-        public EditEmployee(Employee currEmp = null)
+        public EditEmployee(Employee _currEmp)
         {
-            this.currEmp = currEmp;
+            this.currEmp = _currEmp;
             InitializeComponent();
-            try
-            {
-                Globals.dbContext = new FurnishDbConnection();
 
-            }
-            catch (SystemException ex)
-            {
-                MessageBox.Show(this, "Unable to access the database:\n" + ex.Message, "Fatal database error", MessageBoxButton.OK, MessageBoxImage.Error);
-                Environment.Exit(1);
-            }
             if (currEmp != null)
             {
                 TbxUserName.Text = currEmp.name;
@@ -78,13 +69,24 @@ namespace Furnish
 
                 try
                 {
-                    if (currEmp != null)
-                        currEmp.name = TbxUserName.Text;
+                    if ((string)App.Current.Properties[1] == currEmp.name) { 
+                    // Globals.dbContext.ChangeTracker.
+                    currEmp.name = TbxUserName.Text;
                     currEmp.email = TbxEmail.Text;
                     currEmp.role = (RoleEnum)Enum.Parse(typeof(RoleEnum), ComRole.Text);
-                    ///????????????????????????????????????????????????
+
+
+                        App.Current.Properties[1] = currEmp.name;
+                        App.Current.Properties[2] = currEmp.email;
+                        App.Current.Properties[3] = currEmp.role;
+                    }
+                    else
+                    {
+                        currEmp.name = TbxUserName.Text;
+                        currEmp.email = TbxEmail.Text;
+                        currEmp.role = (RoleEnum)Enum.Parse(typeof(RoleEnum), ComRole.Text);
+                    }
                     Globals.dbContext.SaveChanges();
-                    ///????????????????????????????????????????????????
 
                     this.DialogResult = true;
                 }

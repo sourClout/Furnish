@@ -25,6 +25,16 @@ namespace Furnish
         public Login()
         {
             InitializeComponent();
+            try
+            {
+                Globals.dbContext = new FurnishDbConnection();
+
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Unable to access the database:\n" + ex.Message, "Fatal database error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Environment.Exit(1);
+            }
         }
 
         public void Button_Click(object sender, RoutedEventArgs e)
@@ -44,13 +54,15 @@ namespace Furnish
                 string _name = TbxUserName.Text;
                 string _password = TbxPassword.Password;
 
-                FurnishDbConnection fdb = new FurnishDbConnection();
-                Employee Emp = (from employee in fdb.Employees where employee.name == _name && employee.password == _password select employee).FirstOrDefault<Employee>();
+               
+                Employee Emp = (from employee in Globals.dbContext.Employees where employee.name == _name && employee.password == _password select employee).FirstOrDefault<Employee>();
                 if (Emp != null)
                 {
+                    App.Current.Properties[0] =Emp.id;
 
-                    //if(Emp.role == (RoleEnum)2) { 
-                    //}
+                    App.Current.Properties[1] = Emp.name;
+                    App.Current.Properties[2] = Emp.email;
+                    App.Current.Properties[3] = Emp.role;
                     this.DialogResult = true;
                     Close();
                 }
@@ -59,29 +71,6 @@ namespace Furnish
                     errormessage.Text = ("record  not found");
                 }
 
-
-                //SqlConnection con = new SqlConnection("Data Source=fsd04.database.windows.net;Initial Catalog=Furnish;User ID=myadmin;Password=Ouradmin03");
-                //con.Open();
-                //SqlCommand cmd = null;
-
-                //cmd = new SqlCommand("Select * from Employees where Name ='" + name + "'  and password='" + password + "'", con);
-                //SqlDataReader rdr = cmd.ExecuteReader();
-
-
-
-
-                //if (rdr != null)
-                //{
-
-                //    Close();
-                //    con.Close();
-                //}
-                //else
-                //{
-
-                //    errormessage.Text = "Sorry! Please enter existing emailid/password.";
-
-                //}
 
             }
         }
