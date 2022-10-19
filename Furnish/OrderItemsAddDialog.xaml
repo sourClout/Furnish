@@ -13,7 +13,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         xmlns:local="clr-namespace:Furnish"
         mc:Ignorable="d" ResizeMode="NoResize" Loaded="Window_Loaded"
-        Title="OrderItemsAddDialog" Height="450" Width="1200">
+        Title="OrderItemsAddDialog" Height="460" Width="1210">
     <Grid>
         <Label Content="Order Items" FontSize="20" HorizontalAlignment="Left" Margin="34,25,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.216,0.043" Width="200"/>
         <ListView Name="LvOrderItems" HorizontalAlignment="Left" Height="263" Margin="10,75,0,0" VerticalAlignment="Top" Width="510" SelectionChanged="LvOrderItems_SelectionChanged" >
@@ -38,9 +38,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="Quantity requested:" FontSize="16" HorizontalAlignment="Left" Margin="690,369,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.216,0.043" Width="150"/>
-        <TextBox Name="TbxQty" HorizontalAlignment="Left" Height="26" Margin="845,370,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" />
-        <Button Name="btnAddToOrder" Click="btnAddToOrder_Click"  Width="130" Margin="977,367,93,35">Add to Order</Button>
+        <Label Content="Quantity requested:" FontSize="16" HorizontalAlignment="Left" Margin="655,370,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.216,0.043" Width="150"/>
+        <TextBox Name="TbxQty" HorizontalAlignment="Left" Height="26" Margin="810,371,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" />
+        <Button Name="btnAddToOrder" IsDefault="True" Click="btnAddToOrder_Click"  Width="115" Margin="904,362,180,40">Add to Order</Button>
+        <Button IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Margin="1065,365,0,0" VerticalAlignment="Top" Width="115"/>
 
     </Grid>
 </Window>

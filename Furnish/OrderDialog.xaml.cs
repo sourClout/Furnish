@@ -73,6 +73,11 @@ namespace Furnish
             if (selectedOrder == null) return;
             OrderItemsAddDialog orderItemsAddDialog = new OrderItemsAddDialog();
             orderItemsAddDialog.Owner = this;
+            if (orderItemsAddDialog.ShowDialog() == true)
+            {
+                LvOrders.ItemsSource = Globals.dbContext.Orders.ToList();
+                
+            }
 
 
             /*

@@ -103,13 +103,14 @@ namespace Furnish
 
         private bool AreProductInputsValid()
         {
+            /*
             string name = NameInput.Text;
             if (name.Length < 2 || name.Length > 30 || (!Regex.IsMatch(name, @"([A-Z][a-z]+[ ]*)+")))
             {
                 MessageBox.Show("Product name should be 2 to 30 characters, letters only", "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            /*
+            
             string email = TbxEmail.Text;
             if (!Regex.IsMatch(email, @"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"))
             {
