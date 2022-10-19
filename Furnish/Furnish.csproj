@@ -191,6 +191,15 @@
       <DependentUpon>CustomerDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
+    <Compile Include="OrderCreateDialog.xaml.cs">
+      <DependentUpon>OrderCreateDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDialog.xaml.cs">
+      <DependentUpon>OrderDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrderItemsAddDialog.xaml.cs">
+      <DependentUpon>OrderItemsAddDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProductsAddEditDlg.xaml.cs">
       <DependentUpon>ProductsAddEditDlg.xaml</DependentUpon>
     </Compile>
@@ -251,6 +260,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OrderCreateDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OrderDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OrderItemsAddDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProductsAddEditDlg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -24,22 +24,9 @@ namespace Furnish
 
     private void BtnOrders_Click(object sender, RoutedEventArgs e)
     {
-
-        //private void Window_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        Globals.dbContext = new FurnishDbConnection();
-                
-        //    }
-        //    catch (SystemException ex)
-        //    {
-        //        MessageBox.Show(this, "Unable to access the database:\n" + ex.Message, "Fatal database error", MessageBoxButton.OK, MessageBoxImage.Error);
-        //        Environment.Exit(1);
-        //    }
-        //}
-
-    
+            OrderDialog dialog = new OrderDialog();
+            dialog.Owner = this;
+            dialog.ShowDialog();
     }
 
     
@@ -81,7 +68,6 @@ namespace Furnish
 
         }
 
-       
     }
 }
 
