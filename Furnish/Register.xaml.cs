@@ -14,7 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Xml.Linq;
+
 namespace Furnish
 {
 
@@ -27,11 +27,11 @@ namespace Furnish
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
             try
             {
-
                 Globals.dbContext = new FurnishDbConnection();
+
+
             }
             catch (SystemException ex)
             {
@@ -41,10 +41,6 @@ namespace Furnish
         }
 
 
-
-
-
-
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
             TbxUserName.Text = "";
@@ -52,17 +48,9 @@ namespace Furnish
             TbxPassword.Password = "";
             TbxComfirmPassword.Password = "";
 
-
-
         }
-
-
-
-
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-
-
 
 
             if (TbxUserName.Text.Length == 0)
@@ -83,13 +71,11 @@ namespace Furnish
             }
             else
             {
-                 
                 string _name = TbxUserName.Text;
                 string _email = TbxEmail.Text;
                 string _password = TbxPassword.Password;
-                string _role = "User";
-                //string _role = ComboStatus.SelectedValue?.ToString();
-                RoleEnum _comboRole = (RoleEnum)Enum.Parse(typeof(RoleEnum), _role);
+                RoleEnum _role = (RoleEnum)Enum.Parse(typeof(RoleEnum), "User");
+
 
                 if (TbxPassword.Password.Length == 0)
                 {
@@ -110,15 +96,10 @@ namespace Furnish
                 {
                     errormessage.Text = "";
 
-
-
                     try
                     {
-                        //Employee newEmp = new Employee(_name, _email, _password, _role);
-                        //Globals.dbContext.Employees.Add(newEmp);
-
-
-                        Globals.dbContext.Employees.Add(new Employee() { name = _name, email = _email, password = _password, role = _comboRole });
+                        Employee newEmp = new Employee(_name, _email, _password, _role);
+                        Globals.dbContext.Employees.Add(newEmp);
 
 
                         Globals.dbContext.SaveChanges(); // SystemException
@@ -134,21 +115,13 @@ namespace Furnish
                             MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
-
-
-
-
-
-
                     //SqlConnection con = new SqlConnection("Data Source=fsd04.database.windows.net;Initial Catalog=Furnish;User ID=myadmin;Password=Ouradmin03");
                     //con.Open();
                     //SqlCommand cmd = new SqlCommand("Insert into Employees (name,email,password,role) values('" + name + "','"  + email + "','" + password + "', 2 )", con);
                     //cmd.CommandType = CommandType.Text;
                     //cmd.ExecuteNonQuery();
                     //con.Close();
-
-
-
+                    //errormessage.Text = "Register successfully.";
 
 
                     TbxUserName.Text = "";
@@ -159,6 +132,6 @@ namespace Furnish
             }
         }
 
-       
+
     }
 }

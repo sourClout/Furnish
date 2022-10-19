@@ -34,52 +34,57 @@ namespace Furnish
                 errormessage.Text = "Enter your User Name.";
                 TbxUserName.Focus();
             }
+            else if(TbxPassword.Password.Length==0)
+            {
+                errormessage.Text = "Enter your Password.";
+                TbxPassword.Focus();
+            }
             else
             {
-                string name = TbxUserName.Text;
-                string password = TbxPassword.Password;
-                SqlConnection con = new SqlConnection("Data Source=fsd04.database.windows.net;Initial Catalog=Furnish;User ID=myadmin;Password=Ouradmin03");
-                con.Open();
-                SqlCommand cmd = null;
+                string _name = TbxUserName.Text;
+                string _password = TbxPassword.Password;
 
-                cmd = new SqlCommand("Select * from Employees where Name ='" + name + "'  and password='" + password + "'", con);
-                SqlDataReader rdr = cmd.ExecuteReader();
-      
-
-                //while (rdr.Read())
-                //{
-                //    // get the results of each column
-                //    name = (string)rdr["name"];
-                //    string email = (string)rdr["email"];
-                //    string role = (string)rdr["role"];
-
-
-                //}
-
-
-                if (rdr != null)
+                FurnishDbConnection fdb = new FurnishDbConnection();
+                Employee Emp = (from employee in fdb.Employees where employee.name == _name && employee.password == _password select employee).FirstOrDefault<Employee>();
+                if (Emp != null)
                 {
 
+                    //if(Emp.role == (RoleEnum)2) { 
+                    //}
+                    this.DialogResult = true;
                     Close();
-                    con.Close();
                 }
                 else
                 {
-
-                    errormessage.Text = "Sorry! Please enter existing emailid/password.";
-
+                    errormessage.Text = ("record  not found");
                 }
+
+
+                //SqlConnection con = new SqlConnection("Data Source=fsd04.database.windows.net;Initial Catalog=Furnish;User ID=myadmin;Password=Ouradmin03");
+                //con.Open();
+                //SqlCommand cmd = null;
+
+                //cmd = new SqlCommand("Select * from Employees where Name ='" + name + "'  and password='" + password + "'", con);
+                //SqlDataReader rdr = cmd.ExecuteReader();
+
+
+
+
+                //if (rdr != null)
+                //{
+
+                //    Close();
+                //    con.Close();
+                //}
+                //else
+                //{
+
+                //    errormessage.Text = "Sorry! Please enter existing emailid/password.";
+
+                //}
 
             }
         }
-
-        //  get data from database, display in the home page
-       
-
-
     }
-
-       
-
-    }
+}
 

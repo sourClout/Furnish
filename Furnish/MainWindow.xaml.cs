@@ -20,7 +20,20 @@ namespace Furnish
 {    /// <summary>    /// Interaction logic for MainWindow.xaml    /// </summary>    
     public partial class MainWindow : Window    {        
         
-    public MainWindow()        {            InitializeComponent();        }
+    public MainWindow()
+        { 
+            InitializeComponent();
+            try
+            {
+                Globals.dbContext = new FurnishDbConnection();
+                
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Unable to access the database:\n" + ex.Message, "Fatal database error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Environment.Exit(1);
+            }
+        }
 
     private void BtnOrders_Click(object sender, RoutedEventArgs e)
     {
@@ -29,7 +42,7 @@ namespace Furnish
             dialog.ShowDialog();
     }
 
-    
+ 
 
     private void BtnCustomers_Click(object sender, RoutedEventArgs e)
     {
@@ -37,35 +50,73 @@ namespace Furnish
             dialog.Owner = this;
             dialog.ShowDialog();
         }
-        private void BtnLogin_Click(object sender, RoutedEventArgs e)
-        {
+    private void BtnLogin_Click(object sender, RoutedEventArgs e)
+    {
 
-            Login dialog = new Login(); 
-            dialog.Owner = this;
-  
-           
-            if (dialog.ShowDialog() == true)
-                TbxUserName.Text = dialog.Name;
-           
-        }
-
-        private void BtnProducts_Click(object sender, RoutedEventArgs e)
+        Login dialog = new Login(); 
+        dialog.Owner = this;
+            
+        if (dialog.ShowDialog() == true)
         {
-            ProductsViewDlg dialog = new ProductsViewDlg();
-            dialog.Owner = this;
-            dialog.ShowDialog();
+            LvUsers.ItemsSource = Globals.dbContext.Employees.ToList(); 
+            TbkStatus.Text = "Employee login";
         }
+    }
+
+    private void BtnProducts_Click(object sender, RoutedEventArgs e)
+    {
+        ProductsViewDlg dialog = new ProductsViewDlg();
+        dialog.Owner = this;
+        dialog.ShowDialog();
+    }
             
     private void BtnRegister_Click(object sender, RoutedEventArgs e)
     {
             Register dialog = new Register();
             dialog.Owner = this;
             dialog.ShowDialog();
+            TbkStatus.Text = "Employee register";
         }
 
-        private void TbxUserName_TextChanged(object sender, TextChangedEventArgs e)
+
+
+        private void LvUsers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Employee currEmp = LvUsers.SelectedItem as Employee;
+            if (currEmp == null) return;
+
+            EditEmployee dialog = new EditEmployee(currEmp);//==============================================   new
+            dialog.Owner = this;
+
+            if (dialog.ShowDialog() == true)
+            {
+                LvUsers.ItemsSource = Globals.dbContext.Employees.ToList();
+                TbkStatus.Text = "Employee updated";
+            }
+            else
+            {
+                //LvUsers.ItemsSource = currEmp;
+            }
+        }
+
+        private void MenuItem_FileExitClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void MenuItem_ListEditItemClick(object sender, RoutedEventArgs e)
+        {
+            LvUsers_MouseDoubleClick(sender, null);
+        }
+
+        private void MenuItem_ListDeleteItemClick(object sender, RoutedEventArgs e)
         {
 
+
+            Employee currEmp = LvUsers.SelectedItem as Employee;
+            Globals.dbContext.Employees.Remove(currEmp);            
+            Globals.dbContext.SaveChanges();
+            TbkStatus.Text = "Employee deleted";
         }
 
     }

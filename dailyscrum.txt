@@ -125,3 +125,16 @@
 - image file storage in wpf
 - Roles user and admin
 - joint queries in wpf
+
+2022/10/19 Anton
+1. Done / not done since last scrum:
+ - created custom dialog "AddCustomer"
+ - created custom dialog "UpdateCustomer""
+ - added Search option for customer listview
+ - implemented "Delete Customer" in customer dialog
+2. To do until next Scrum:
+ - create order dialog
+ - create add order dialog
+ - create add items to order dialog
+3. Need assistance / figure things out
+- joined queries
