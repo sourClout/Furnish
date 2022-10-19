@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using static System.Data.Entity.Infrastructure.Design.Executor;
 using System.Xml.Linq;
+using Microsoft.Win32;
+using System.IO;
 
 namespace Furnish
 {
@@ -44,7 +46,6 @@ namespace Furnish
  
         private void LvCustomers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
             disableButtons();
 
             /*
@@ -59,7 +60,6 @@ namespace Furnish
                 TbxPhone.Text = selectedCustomer.phone;
             }
             */
-        
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -71,7 +71,6 @@ namespace Furnish
             {
                 LvCustomers.ItemsSource = Globals.dbContext.Customers.ToList();
             }
-            
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -92,20 +91,32 @@ namespace Furnish
             }
         }
 
-        private void BtnUpdate_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            SaveFileDialog saveIt = new SaveFileDialog();
+            saveIt.Filter = "Text file (*.csv)|*.csv|All files (*.*)|*.*";
+            if (saveIt.ShowDialog() != true) return;
 
+            //            List<Trip> tripExport = Globals.DbContext.Travels.ToList();
+            List<string> lines = new List<string>();
+            foreach (Customer c in LvCustomers.SelectedItems)
+            {
+                lines.Add($"{c.id};{c.name};{c.email};{c.phone}");
+            }
+            try
+            {
+                File.WriteAllLines(saveIt.FileName, lines);
+                MessageBox.Show(this, "Export successful!", "Export Status", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex) when (ex is IOException || ex is SystemException)
+            {
+                MessageBox.Show(this, "Export failed\n" + ex.Message, "Export Status", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void disableButtons()
         {
             Customer selectedCustomer = LvCustomers.SelectedItem as Customer;
-            BtnUpdate.IsEnabled = (selectedCustomer != null);
             BtnDelete.IsEnabled = (selectedCustomer != null);
         }
 
@@ -123,6 +134,24 @@ namespace Furnish
                 LvCustomers.ItemsSource = Globals.dbContext.Customers.ToList();
             }
         }
+
+        private void TbxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var tbx = sender as TextBox;
+            if (tbx.Text != "")
+            {
+                var filteredList = Globals.dbContext.Customers.ToList().Where(x => x.name.ToLower().Contains(tbx.Text.ToLower()));
+                LvCustomers.ItemsSource = null;
+                LvCustomers.ItemsSource = filteredList;
+            }
+            else 
+            {
+                LvCustomers.ItemsSource = Globals.dbContext.Customers.ToList();
+            }
+        }
+
+        
+
 
 
         /*

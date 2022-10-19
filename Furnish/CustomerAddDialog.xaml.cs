@@ -47,27 +47,43 @@ namespace Furnish
         {
             try
             {
+                
                 if (currCustomer != null)
                 { // update
-                    currCustomer.name = TbxName.Text; // ArgumentException
-                    currCustomer.email = TbxEmail.Text; // ArgumentException
-                    currCustomer.phone = TbxPhone.Text; // ArgumentException
+                    try
+                    {
+                        if (!AreCustomerInputsValid()) return;
+                        currCustomer.name = TbxName.Text; // ArgumentException
+                        currCustomer.email = TbxEmail.Text; // ArgumentException
+                        currCustomer.phone = TbxPhone.Text; // ArgumentException
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        MessageBox.Show(this, ex.Message, "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
                 else
                 { // add
-                    Customer newCustomer = new Customer(TbxName.Text, TbxEmail.Text, TbxPhone.Text);
-                    Globals.dbContext.Customers.Add(newCustomer); // ArgumentException
+                    try 
+                    { 
+                        if (!AreCustomerInputsValid()) return;
+                        Customer newCustomer = new Customer(TbxName.Text, TbxEmail.Text, TbxPhone.Text);
+                        Globals.dbContext.Customers.Add(newCustomer); // ArgumentException
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        MessageBox.Show(this, ex.Message, "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
-                
                 Globals.dbContext.SaveChanges(); // SystemException
                 this.DialogResult = true; // dismiss the dialog
-                
-
             }
+            /*
             catch (ArgumentException ex)
             {
                 MessageBox.Show(this, ex.Message, "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            */
             catch (SystemException ex)
             {
                 MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Database error",
@@ -80,7 +96,7 @@ namespace Furnish
         private bool AreCustomerInputsValid()
         {
             string name = TbxName.Text;
-            if (name.Length < 2 || name.Length > 30 || (!Regex.IsMatch(name, @"\([A-Z][a-z]+[ ]*\)+")))
+            if (name.Length < 2 || name.Length > 30 || (!Regex.IsMatch(name, @"([A-Z][a-z]+[ ]*)+")))
             {
                 MessageBox.Show("Name should be 2 to 30 characters, letters only", "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
@@ -91,16 +107,13 @@ namespace Furnish
                 MessageBox.Show("Wrong email format", "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-
-
-            /*
             string phone = TbxPhone.Text;
-            if (!Customer.IsPhoneValid(name, out string errorPhone))
+            if (!Regex.IsMatch(phone, @"^[1-9]\d{2}-\d{3}-\d{4}"))
             {
-                MessageBox.Show(this, errorPhone, "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Phone number format must be 111-111-1111 ", "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            */
+            
 
             return true;
 

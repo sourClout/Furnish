@@ -30,8 +30,9 @@
 
         <Button Name="BtnAdd" Content="Add"  HorizontalAlignment="Left" Margin="33,365,0,0" VerticalAlignment="Top" Width="140" Height="30" Click="BtnAdd_Click" />
         <Button Name="BtnDelete" Content="Delete" HorizontalAlignment="Center" Margin="0,365,0,0" VerticalAlignment="Top" Width="140" Height="30" Click="BtnDelete_Click" />
-        <Button Name="BtnUpdate" Content="Update" HorizontalAlignment="Left" Margin="432,365,0,0" VerticalAlignment="Top" Width="140" Height="30" Click="BtnUpdate_Click" />
-        <Button Name="BtnSave" Content="Save To File" HorizontalAlignment="Left" Margin="220,13,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="BtnSave_Click" />
+        <Button Name="BtnSave" Content="Save To File" HorizontalAlignment="Left" Margin="23,10,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="BtnSave_Click" />
+        <Label Content="Search" FontSize="14" HorizontalAlignment="Center" Margin="0,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.216,0.043" Width="60"/>
+        <TextBox Name="TbxSearch" HorizontalAlignment="Left" Height="26" Margin="335,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240" TextChanged="TbxSearch_TextChanged" />
 
     </Grid>
 </Window>
