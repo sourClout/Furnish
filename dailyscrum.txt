@@ -111,3 +111,17 @@
  - create custom dialog "UpdateCustomer"
  - implement "Delete Customer" in customer dialog
 3. Need assistance / figure things out
+
+2022/10/19 Alex
+1. Done / not done since last scrum:
+- Finished Products view list page and add/edit products
+- Helped solve Register customer bug
+- Researched and tried implementing save image to uri
+2. To do until next Scrum:
+- Finish uploading and storing image
+- work collaborating on orders
+- finalize/align all design elements
+3. Need assistance / figure things out
+- image file storage in wpf
+- Roles user and admin
+- joint queries in wpf
