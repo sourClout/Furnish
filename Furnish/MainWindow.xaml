@@ -57,27 +57,59 @@
 
             </Grid>
         </Border>
-        <Border DockPanel.Dock="right" BorderBrush="Gray" BorderThickness="0.5" Background="Black">
-            <Grid Margin="0,0,0,0" Background="#FFF1F0F3">
-                <TextBox x:Name="TbxUserName" TextWrapping="Wrap" Text="TbxUserName" Width="100" Height="28" Margin="47,36,281,0" VerticalAlignment="Top" TextChanged="TbxUserName_TextChanged"/>
-                <TextBox x:Name="TbxEmail" TextWrapping="Wrap" Text="TbxEmail" Width="100" Height="28" Margin="47,82,281,0" VerticalAlignment="Top" TextChanged="TbxUserName_TextChanged"/>
-                <Button  Name="BtnLogin" HorizontalAlignment="Left" Margin="269,263,0,0" VerticalAlignment="Top" Width="140" Click="BtnLogin_Click">
+        <Border DockPanel.Dock="right" BorderBrush="Gray" BorderThickness="0.5" Background="Black" Height="366" >
+            <Grid Background="#FFF1F0F3" Width="429">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="61*"/>
+                    <RowDefinition Height="304*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="58*"/>
+                    <ColumnDefinition Width="342*"/>
+                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="16*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button  Name="BtnLogin" HorizontalAlignment="Left" Margin="6,259,0,0" VerticalAlignment="Top" Width="140" Click="BtnLogin_Click" Grid.Row="1" Grid.Column="1" Height="32">
                     <Grid Width="130">
                         <materialDesign:PackIcon Kind="Invoice" VerticalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center" Text="Log in" />
                     </Grid>
                 </Button>
-                <Button  Name="BtnRegister" HorizontalAlignment="Left" Margin="269,311,0,0" VerticalAlignment="Top" Width="140" Click="BtnRegister_Click">
+                <Button  Name="BtnRegister" HorizontalAlignment="Left" Margin="170,259,0,0" VerticalAlignment="Top" Width="140" Click="BtnRegister_Click" Grid.Column="1" Grid.Row="1" Height="32">
                     <Grid Width="130">
                         <materialDesign:PackIcon Kind="Invoice" VerticalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center" Text="Register" />
                     </Grid>
                 </Button>
+                <ListView Name="LvUsers" Margin="0,19,0,69"  Background="white" Grid.RowSpan="2" MouseDoubleClick="LvUsers_MouseDoubleClick" SelectionMode="Single" HorizontalAlignment="Center" Grid.Column="1" Width="410">
+                    <ListView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Edit" Click="MenuItem_ListEditItemClick"/>
+                            <MenuItem Header="Delete" Click="MenuItem_ListDeleteItemClick"/>
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+
+                    <ListView.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </ListView.Resources>
+                    <ListView.View >
+                        <GridView >
+                            <GridViewColumn Header="Id" Width="80" DisplayMemberBinding="{Binding id}" />
+                            <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding name}" />
+                            <GridViewColumn Header="Email" Width="120" DisplayMemberBinding="{Binding email}" />
+                            <GridViewColumn Header="Phone" Width="100" DisplayMemberBinding="{Binding role}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </Grid>
         </Border>
-
-
+        <!--SelectionChanged="LvUsers_SelectionChanged"-->
 
 
     </DockPanel>
 </Window>
+

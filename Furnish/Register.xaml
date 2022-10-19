@@ -65,20 +65,16 @@
 
 
 
-            <Label Content="Status: " HorizontalAlignment="Left" Margin="222,39,0,0" VerticalAlignment="Top" FontSize="16"/>
-            <!--<ComboBox Name="ComboStatus" SelectedValuePath="Content" HorizontalAlignment="Left" Margin="286,43,0,0" VerticalAlignment="Top" Width="146" FontSize="16">
-                <ComboBoxItem Name="ComboUser" IsSelected="True">User</ComboBoxItem>
-                <ComboBoxItem>Admin</ComboBoxItem>
-            </ComboBox>-->
+
             <Label Content="Password:" HorizontalAlignment="Left" Margin="195,224,0,0" VerticalAlignment="Top" FontSize="16"/>
             <Button x:Name ="Submit" Content="Submit" HorizontalAlignment="Left" Margin="170,342,0,0" VerticalAlignment="Top" Width="100" Height="40" FontSize="16" Click="Submit_Click" />
 
-            <TextBlock x:Name ="errormessage"  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="247" Height="25" Margin="195,253,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C"  />
-            <Label Content="Email:" HorizontalAlignment="Left" Margin="195,160,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <TextBlock x:Name ="errormessage"  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="247" Height="25" Margin="195,47,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C"  />
+            <Label Content="Email:" HorizontalAlignment="Left" Margin="220,162,0,0" VerticalAlignment="Top" FontSize="16"/>
             <Label Content="UserName:" HorizontalAlignment="Left" Margin="195,91,0,0" VerticalAlignment="Top" FontSize="16"/>
             <Button x:Name="Cancel" IsCancel="True"  HorizontalAlignment="Left" Margin="300,342,0,0" VerticalAlignment="Top" Width="100" Height="40" FontSize="16">_Cancel</Button>
             <Button x:Name="Reset"  HorizontalAlignment="Left" Margin="425,342,0,0" VerticalAlignment="Top" Width="100" Height="40" FontSize="16" Click="Reset_Click" >_Reset</Button>
-            <Label Content="ConfirmPassword:" HorizontalAlignment="Left" Margin="153,295,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <Label Content="ConfirmPassword:" HorizontalAlignment="Left" Margin="138,295,0,0" VerticalAlignment="Top" FontSize="16"/>
 
 
         </Grid>
