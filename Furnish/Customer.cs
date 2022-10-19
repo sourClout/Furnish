@@ -19,22 +19,20 @@ namespace Furnish
         {
             this.Orders = new HashSet<Order>();
         }
-
-        public Customer(string _name, string _email, string _phone)
-        {
-            name = _name;
-            email = _email;
-            phone = _phone;
-        }
-
+    
         public int id { get; set; }
         public string name { get; set; }
         public string email { get; set; }
         public string phone { get; set; }
-    
+
+        public Customer(string name, string email, string phone)
+        {
+            this.name = name;
+            this.email = email;
+            this.phone = phone;
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
-
-
     }
 }

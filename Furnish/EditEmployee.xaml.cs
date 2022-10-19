@@ -56,48 +56,60 @@ namespace Furnish
 
         private void btSave_Click(object sender, RoutedEventArgs e)
         {
-            if (TbxUserName.Text.Length == 0)
+            try
             {
-                errormessage.Text = "Enter an name.";
-                TbxUserName.Focus();
-            }
-            else if (TbxEmail.Text.Length == 0)
-            {
-                errormessage.Text = "Enter an email.";
-                TbxEmail.Focus();
-            }
-            else if (!Regex.IsMatch(TbxEmail.Text, @"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"))
-            {
-                errormessage.Text = "Enter a valid email.";
-                TbxEmail.Select(0, TbxEmail.Text.Length);
-                TbxEmail.Focus();
-            }
-            else
-            {
-                errormessage.Text = "";
 
-                try
+                
+
+
+                if (TbxUserName.Text.Length == 0)
                 {
-                    if (currEmp != null)
-                        currEmp.name = TbxUserName.Text;
+                    errormessage.Text = "Enter an name.";
+                    TbxUserName.Focus();
+                }
+                else if (TbxEmail.Text.Length == 0)
+                {
+                    errormessage.Text = "Enter an email.";
+                    TbxEmail.Focus();
+                }
+                else if (!Regex.IsMatch(TbxEmail.Text, @"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"))
+                {
+                    errormessage.Text = "Enter a valid email.";
+                    TbxEmail.Select(0, TbxEmail.Text.Length);
+                    TbxEmail.Focus();
+                }
+                else
+                {
+                    errormessage.Text = "";
+
+                }
+
+                if (currEmp != null)
+                { // update
+                    currEmp.name = TbxUserName.Text;
                     currEmp.email = TbxEmail.Text;
-                    currEmp.role = (RoleEnum)Enum.Parse(typeof(RoleEnum), ComRole.Text);
-                    ///????????????????????????????????????????????????
-                    Globals.dbContext.SaveChanges();
-                    ///????????????????????????????????????????????????
 
-                    this.DialogResult = true;
+                    //currEmp.role = (RoleEnum)Enum.Parse(typeof(RoleEnum), ComRole.Text);
                 }
-                catch (ArgumentException ex)
-                {
-                    MessageBox.Show(this, ex.Message, "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                catch (SystemException ex)
-                {
-                    MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Database error",
-                        MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+
+                ///????????????????????????????????????????????????
+                Globals.dbContext.SaveChanges();
+                ///????????????????????????????????????????????????
+
+                this.DialogResult = true;
+
+
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(this, ex.Message, "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Database error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             }
         }
     }
-}
+

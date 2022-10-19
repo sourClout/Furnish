@@ -94,10 +94,12 @@ namespace Furnish
                 LvUsers.ItemsSource = Globals.dbContext.Employees.ToList();
                 TbkStatus.Text = "Employee updated";
             }
+            /*
             else
             {
                 //LvUsers.ItemsSource = currEmp;
             }
+            */
         }
 
         private void MenuItem_FileExitClick(object sender, RoutedEventArgs e)

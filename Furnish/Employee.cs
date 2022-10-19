@@ -26,12 +26,12 @@ namespace Furnish
         public string password { get; set; }
         public RoleEnum role { get; set; }
 
-        public Employee(string _name, string _email, string _password, RoleEnum _role)
+        public Employee(string name, string email, string password, RoleEnum role)
         {
-            this.name = _name;
-            this.email = _email;
-            this.password = _password;
-            this.role = _role;
+            this.name = name;
+            this.email = email;
+            this.password = password;
+            this.role = role;
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
