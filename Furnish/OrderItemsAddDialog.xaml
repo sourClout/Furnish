@@ -38,10 +38,11 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="Quantity requested:" FontSize="16" HorizontalAlignment="Left" Margin="596,366,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.216,0.043" Width="150"/>
-        <TextBox Name="TbxQty" HorizontalAlignment="Left" Height="26" Margin="751,367,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" />
+        
+        <Button Name="BtnRemove" Content="Remove" HorizontalAlignment="Left" Margin="34,361,0,0" VerticalAlignment="Top" Width="140" Height="30" Click="BtnRemove_Click" />
+        <Label Content="Quantity requested:" FontSize="16" HorizontalAlignment="Left" Margin="655,370,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.216,0.043" Width="150"/>
+        <TextBox Name="TbxQty" HorizontalAlignment="Left" Height="26" Margin="810,371,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" />
         <Button Name="btnAddToOrder" IsDefault="True" Click="btnAddToOrder_Click"  Width="115" Margin="830,364,265,68">Add to Order</Button>
         <Button IsCancel="True" Content="Cancel"  Margin="973,366,122,66"  Width="115"/>
-
     </Grid>
 </Window>

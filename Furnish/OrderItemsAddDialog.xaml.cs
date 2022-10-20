@@ -73,11 +73,17 @@ namespace Furnish
                 decimal productPrice = currProduct.price * productQty;
                 int order_Id = currOrder.id;
 
+                // 
+                currProduct.qtyAvailable = currProduct.qtyAvailable - productQty;
+
                 OrderItem newOrderItem = new OrderItem(productId, order_Id, productQty, productPrice);
                 Globals.dbContext.OrderItems.Add(newOrderItem); // ArgumentException
 
+                
+
                 Globals.dbContext.SaveChanges(); // SystemException
                 LvOrderItems.ItemsSource = Globals.dbContext.OrderItems.ToList();
+                LvItemsAvailable.ItemsSource = Globals.dbContext.Products.ToList();
             }
             catch (SystemException ex)
             {
@@ -87,5 +93,25 @@ namespace Furnish
 
         }
 
+        private void BtnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            OrderItem selectedOrderItem = LvOrderItems.SelectedItem as OrderItem;
+            if (selectedOrderItem == null) return;
+            var result = MessageBox.Show(this, "Are you sure you want to delete this customer?", "Confirm deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result != MessageBoxResult.Yes) return;
+            try
+            {
+                Product prodProduct = (from product in Globals.dbContext.Products where product.id == selectedOrderItem.productId select product).FirstOrDefault<Product>();
+                prodProduct.qtyAvailable += selectedOrderItem.qty;
+                Globals.dbContext.OrderItems.Remove(selectedOrderItem);
+                Globals.dbContext.SaveChanges();
+                LvOrderItems.ItemsSource = Globals.dbContext.OrderItems.ToList();
+                LvItemsAvailable.ItemsSource = Globals.dbContext.Products.ToList();
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Unable to access the database:\n" + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }
