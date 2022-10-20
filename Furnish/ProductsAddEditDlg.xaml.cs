@@ -1,6 +1,13 @@
 
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using Path = System.IO.Path;
 using System.Data.SqlClient;
@@ -38,6 +45,22 @@ namespace Furnish
 
         }
 
+        SqlConnection con = new SqlConnection("Data Source=fsd04.database.windows.net;Initial Catalog=Furnish;User ID=myadmin;Password=Ouradmin03");
+        string imgLocation = "";
+        SqlCommand cmd;
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {  
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Filter = "Images files|*.bmp;*.jpg;*.png";
+            openDialog.FilterIndex = 1;
+            if (openDialog.ShowDialog() == true)
+            {
+                imgLocation = openDialog.FileName.ToString();
+                Uri fileUri = new Uri(openDialog.FileName);
+                pictureBox1.Source = new BitmapImage(fileUri);
+            }
+        }
         private void BtSave_Click(object sender, RoutedEventArgs e)
         {
 
@@ -45,40 +68,44 @@ namespace Furnish
             try
 
             {
-
-                File.Copy(textBox.Text, Path.Combine(@"C:\Users\shift\Documents\GitHub\ApplicationDevelopment\Furnish\Furnish\Furnish\image\", Path.GetFileName(textBox.Text)), true);
-
-                string imageUrl = @"C:\Users\shift\Documents\GitHub\ApplicationDevelopment\Furnish\Furnish\Furnish\image\" + textBox.Text;
-
-
-                // FIXME: due date may be null
                 if (currProduct != null)
-                { // update
-
+                { 
                     currProduct.name = NameInput.Text; // ArgumentException
                     currProduct.description = DescriptionInput.Text; // ArgumentException
                     // Must convert string to decimal
                     currProduct.price = decimal.Parse(PriceInput.Text);
                     //currProduct.price = PriceInput.Text; // ArgumentException
                     currProduct.qtyAvailable = (int)QuantitySlider.Value; // ArgumentException
-                                                                          //currProduct.imageUrl = OpenFileDialog.FileName;
+                    //currProduct.imageUrl = OpenFileDialog.FileName;
 
                     //currProduct.imageUrl = imageUrl;
 
 
 
 
+                    Globals.dbContext.SaveChanges();
                 }
                 else
                 { // add
                   //FIXME: Product has 5 fields due to IMAGE --> either add image or create new 4 field constructor
+                    byte[] images = null;
+                    FileStream Stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+                    BinaryReader brs = new BinaryReader(Stream);
+                    images = brs.ReadBytes((int)Stream.Length);
 
-                    Product newProduct = new Product(NameInput.Text, DescriptionInput.Text, decimal.Parse(PriceInput.Text), (int)QuantitySlider.Value);
-                    Globals.dbContext.Products.Add(newProduct); // ArgumentException
-                }
 
+                    con.Open();
+                    string sqlQuery = "Insert into Products (name,description,price,qtyAvailable,image) values('" + NameInput.Text + "','" + DescriptionInput.Text + "','" + decimal.Parse(PriceInput.Text) + "','" + (int)QuantitySlider.Value + "', @images)";
 
-                Globals.dbContext.SaveChanges(); // SystemException
+                    cmd = new SqlCommand(sqlQuery, con);
+                    cmd.Parameters.Add(new SqlParameter("@images", images));
+                    int N = cmd.ExecuteNonQuery();
+                    con.Close();
+
+                    //Product newProduct = new Product(NameInput.Text, DescriptionInput.Text, decimal.Parse(PriceInput.Text), (int)QuantitySlider.Value, @images);
+                   /* Globals.dbContext.Products.Add(newProduct);*/ // ArgumentException
+                } 
+                // SystemException
                 this.DialogResult = true; // dismiss the dialog
             }
             catch (ArgumentException ex)
@@ -132,25 +159,29 @@ namespace Furnish
             if (dlg.ShowDialog() == true)
             {
                 FileStream imageStream = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read);
+        //private void uploadButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    OpenFileDialog openDialog = new OpenFileDialog();
+        //    openDialog.Filter = "Images files|*.bmp;*.jpg;*.png";
+        //    openDialog.FilterIndex = 1;
+        //    if (openDialog.ShowDialog() == true)
+        //    {
+        //        textBox.Text = openDialog.FileName;
+        //        Uri fileUri = new Uri(openDialog.FileName);
+        //        pictureBox1.Source = new BitmapImage(fileUri);
+        //    }
+        //}
+        //string connectionString = "<connection_string>";
+        //string containerName = "sample-container";
+        //string blobName = "sample-blob";
+        //string filePath = "sample-file";
 
-                byte[] iBytes = new byte[imageStream.Length + 1];
-            }
-            /*
-           
-            /*
-            using (FilesEntities entities = new FilesEntities())
-            {
-                tblFile file = new tblFile
-                {
-                    Name = Path.GetFileName(fuUploadFile.PostedFile.FileName),
-                    ContentType = fuUploadFile.PostedFile.ContentType,
-                    Data = fuUploadFile.FileBytes,
-                };
-                entities.AddTotblFiles(file);
-                entities.SaveChanges();
-            }
-            */
+        //// Get a reference to a container named "sample-container" and then create it
+        //BlobContainerClient container = new BlobContainerClient(connectionString, containerName);
+        //container.Create();
 
+        //// Get a reference to a blob named "sample-file" in a container named "sample-container"
+        //BlobClient blob = container.GetBlobClient(blobName);
 
             /*
             OpenFileDialog openDialog = new OpenFileDialog();
@@ -164,68 +195,11 @@ namespace Furnish
             }
             */
         } 
+        //// Upload local file
+        //blob.Upload(filePath);
 
+       
 
-
-        private bool AreProductInputsValid()
-        {
-            /*
-            string name = NameInput.Text;
-            if (name.Length < 2 || name.Length > 30 || (!Regex.IsMatch(name, @"([A-Z][a-z]+[ ]*)+")))
-            {
-                MessageBox.Show("Product name should be 2 to 30 characters, letters only", "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            
-            string email = TbxEmail.Text;
-            if (!Regex.IsMatch(email, @"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"))
-            {
-                MessageBox.Show("Wrong email format", "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            string phone = TbxPhone.Text;
-            if (!Regex.IsMatch(phone, @"^[1-9]\d{2}-\d{3}-\d{4}"))
-            {
-                MessageBox.Show("Phone number format must be 111-111-1111 ", "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            */
-
-
-            return true;
-
-        }
-
-
-
-        /*
-        private void ResetFields()
-        {
-            NameInput.Text = "";
-            DescriptionInput.Text = "";
-            PriceInput.Text = "";
-            QuantitySlider.Value = QuantitySlider.SelectionStart;
-            // IMAGE
-
-        }
-        */
-
-
-
-            //string connectionString = "<connection_string>";
-            //string containerName = "sample-container";
-            //string blobName = "sample-blob";
-            //string filePath = "sample-file";
-
-            //// Get a reference to a container named "sample-container" and then create it
-            //BlobContainerClient container = new BlobContainerClient(connectionString, containerName);
-            //container.Create();
-
-            //// Get a reference to a blob named "sample-file" in a container named "sample-container"
-            //BlobClient blob = container.GetBlobClient(blobName);
-
-            //// Upload local file
-            //blob.Upload(filePath);
-        }
-    }
+       
+     
 

@@ -71,6 +71,8 @@ namespace Furnish
             }
             else
             {
+               
+                    
                 string _name = TbxUserName.Text;
                 string _email = TbxEmail.Text;
                 string _password = TbxPassword.Password;
@@ -95,24 +97,31 @@ namespace Furnish
                 else
                 {
                     errormessage.Text = "";
-
-                    try
+                    Employee Emp = (from employee in Globals.dbContext.Employees where employee.name == _name  select employee).FirstOrDefault<Employee>();
+                    if (Emp == null)
                     {
-                        Employee newEmp = new Employee(_name, _email, _password, _role);
-                        Globals.dbContext.Employees.Add(newEmp);
+                        try
+                        {
+                            Employee newEmp = new Employee(_name, _email, _password, _role);
+                            Globals.dbContext.Employees.Add(newEmp);
 
 
-                        Globals.dbContext.SaveChanges(); // SystemException
-                        this.DialogResult = true; // dismiss the dialog
+                            Globals.dbContext.SaveChanges(); // SystemException
+                            this.DialogResult = true; // dismiss the dialog
+                        }
+                        catch (ArgumentException ex)
+                        {
+                            MessageBox.Show(this, ex.Message, "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                        catch (SystemException ex)
+                        {
+                            MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Database error",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
-                    catch (ArgumentException ex)
+                    else
                     {
-                        MessageBox.Show(this, ex.Message, "Input error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                    catch (SystemException ex)
-                    {
-                        MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Database error",
-                            MessageBoxButton.OK, MessageBoxImage.Error);
+                        errormessage.Text = "Username exist.";
                     }
 
                     //SqlConnection con = new SqlConnection("Data Source=fsd04.database.windows.net;Initial Catalog=Furnish;User ID=myadmin;Password=Ouradmin03");

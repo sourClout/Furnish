@@ -62,38 +62,26 @@
         </Border>
         <Border>
             <Grid>
-            <ListView  Name="LvProd" SelectionChanged="LvProd_SelectionChanged" SelectionMode="Single" MouseDoubleClick="LvProd_MouseDoubleClick">
+                <ListView  Name="LvProd" SelectionChanged="LvProd_SelectionChanged" SelectionMode="Single" MouseDoubleClick="LvProd_MouseDoubleClick">
                     
-                    <ListView.Resources>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="TextWrapping" Value="Wrap"/>
-                    </Style>
+                <ListView.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="TextWrapping" Value="Wrap"/>
+                </Style>
                 </ListView.Resources>
+
                 <ListView.View >
-                    
-                <GridView>
-                            <!--<GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Image Source="{Binding imageUrl}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>-->
-                    
-                            <GridViewColumn>
-                                <Image Source="{Binding imageUrl}"/>
-                            </GridViewColumn>
-                            
-                            <GridViewColumn Header="Image" Width="120" DisplayMemberBinding="{Binding imageUrl}" />
-                    <GridViewColumn Header="ID" Width="90" DisplayMemberBinding="{Binding id}" />
-                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding name}" />
-                    <GridViewColumn Header="Description" Width="130" DisplayMemberBinding="{Binding description}"  />
-                    <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding price}"  />
-                    <GridViewColumn Header="Quantity" Width="120" DisplayMemberBinding="{Binding qtyAvailable}"  />
-
+                    <GridView>
+                        <GridViewColumn Header="ID" Width="90" DisplayMemberBinding="{Binding id}" />
+                        <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding name}" />
+                        <GridViewColumn Header="Description" Width="130" DisplayMemberBinding="{Binding description}"  />
+                        <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding price}"  />
+                        <GridViewColumn Header="Quantity" Width="120" DisplayMemberBinding="{Binding qtyAvailable}"  />
                     </GridView>
-            </ListView.View>
+                </ListView.View>        
 
-        </ListView>
-        </Grid>
+                </ListView>
+            </Grid>
         </Border>
     </DockPanel>
 </Window>

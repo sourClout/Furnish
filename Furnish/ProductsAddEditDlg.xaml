@@ -18,13 +18,13 @@
     <Grid>
         <materialDesign:PackIcon Kind="Account" Margin="15,44,0,0" Height="22" Width="18"/>
         <Label Content="Name:" HorizontalAlignment="Left" Margin="38,44,0,0" VerticalAlignment="Top"  />
-        <TextBox Name="NameInput" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="120,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Height="30" />
+        <TextBox x:Name="NameInput" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="120,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Height="30" />
         <materialDesign:PackIcon Kind="StickyNoteText" Margin="15,95,0,0" Height="22" Width="18"/>
         <Label Content="Description:" HorizontalAlignment="Left" Margin="38,95,0,0" VerticalAlignment="Top"  />
-        <TextBox Name="DescriptionInput" SpellCheck.IsEnabled="True" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="120,88,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Height="30" />
+        <TextBox x:Name="DescriptionInput" SpellCheck.IsEnabled="True" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="120,88,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Height="30" />
         <materialDesign:PackIcon Kind="Dollar" Margin="15,153,0,0" Height="22" Width="18"/>
         <Label Content="Price:" HorizontalAlignment="Left" Margin="38,153,0,0" VerticalAlignment="Top"  />
-        <TextBox Name="PriceInput" SpellCheck.IsEnabled="True" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="120,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Height="30" />
+        <TextBox x:Name="PriceInput" SpellCheck.IsEnabled="True" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="120,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Height="30" />
         <materialDesign:PackIcon Kind="Image" Margin="15,265,0,0" Height="22" Width="18"/>
         <Label Content="Image:" HorizontalAlignment="Left" Margin="38,265,0,0" VerticalAlignment="Top" />
         <!--<TextBox Name="ImageInput" SpellCheck.IsEnabled="True" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="120,194,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Height="30" />-->
@@ -34,12 +34,12 @@
 
         <materialDesign:PackIcon Kind="DotsTriangle" Margin="15,209,0,0" Height="22" Width="18"/>
         <Label Content="Quantity:" HorizontalAlignment="Left" Margin="38,209,0,0" VerticalAlignment="Top" />
-        <Slider  Name="QuantitySlider" IsSelectionRangeEnabled="True" IsSnapToTickEnabled="True" TickPlacement="None" TickFrequency="1" Minimum="0" Maximum="50" SelectionStart="1" SelectionEnd="50" HorizontalAlignment="Left" Margin="145,209,0,0" VerticalAlignment="Top" Width="165" Height="29"/>
+        <Slider  x:Name="QuantitySlider" IsSelectionRangeEnabled="True" IsSnapToTickEnabled="True" TickPlacement="None" TickFrequency="1" Minimum="0" Maximum="50" SelectionStart="1" SelectionEnd="50" HorizontalAlignment="Left" Margin="145,209,0,0" VerticalAlignment="Top" Width="165" Height="29"/>
         <TextBlock Text="{Binding ElementName=QuantitySlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" Margin="108,212,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22" Width="23"  />
-        <Button Name="BtSave" IsDefault="True" Click="BtSave_Click" Content="Save" HorizontalAlignment="Left" Margin="56,376,0,0" VerticalAlignment="Top" Width="92"/>
+        <Button Name="BtSave" IsDefault="True"  Content="Save" HorizontalAlignment="Left" Margin="56,376,0,0" VerticalAlignment="Top" Width="92" Click="BtSave_Click"/>
         <Button IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Margin="182,376,0,0" VerticalAlignment="Top" Width="92"/>
         <Grid>
-            <Button Content="Click to Upload" Click="uploadButton_Click" Width="100" Height="100" Margin="120,227,80,57" FontSize="10" Background="LightGray" BorderBrush="Purple"/>
+            <Button Content="Click to Upload"  Width="100" Height="100" Margin="120,227,80,57" FontSize="10" Background="LightGray" BorderBrush="Purple" Click="Button_Click"/>
             <Image x:Name="pictureBox1" Stretch="Uniform" Height="100" Margin="145,252,105,0" VerticalAlignment="Top" Width="100"/>
             <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="20,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104"/>
         </Grid>
