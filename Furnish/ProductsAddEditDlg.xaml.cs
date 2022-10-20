@@ -66,9 +66,6 @@ namespace Furnish
         }
         private void BtSave_Click(object sender, RoutedEventArgs e)
         {
-
-
-
             try
             {
                 byte[] images = null;
@@ -79,7 +76,7 @@ namespace Furnish
 
 
                 if (currProduct != null)
-                {
+                {//update
                     
                         currProduct.name = NameInput.Text; // ArgumentException
                         currProduct.description = DescriptionInput.Text; // ArgumentException
@@ -88,14 +85,10 @@ namespace Furnish
                         //currProduct.price = PriceInput.Text; 
                         currProduct.qtyAvailable = (int)QuantitySlider.Value; // ArgumentException
                         currProduct.image = images;
-                        Globals.dbContext.SaveChanges();
-                    
-                    
-                    
+                    Globals.dbContext.SaveChanges();
                 }
                 else
                 { // add
-                  //FIXME: Product has 5 fields due to IMAGE --> either add image or create new 4 field constructor
                     con.Open();
                     string sqlQuery = "Insert into Products (name,description,price,qtyAvailable,image) values('" + NameInput.Text + "','" + DescriptionInput.Text + "','" + decimal.Parse(PriceInput.Text) + "','" + (int)QuantitySlider.Value + "', @images)";
 
@@ -112,6 +105,7 @@ namespace Furnish
                     /* Globals.dbContext.Products.Add(newProduct);*/ // ArgumentException
                 }
                 // SystemException
+                
                 this.DialogResult = true; // dismiss the dialog
             }
             catch (ArgumentException ex)

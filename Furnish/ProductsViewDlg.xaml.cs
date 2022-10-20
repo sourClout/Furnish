@@ -65,6 +65,7 @@ namespace Furnish
             if (currSelectedProduct == null) return; // nothing selected
             ProductsAddEditDlg dlg = new ProductsAddEditDlg(currSelectedProduct);
             dlg.Owner = this;
+            Globals.dbContext.SaveChanges();
             if (dlg.ShowDialog() == true)
             {
                 LvProd.ItemsSource = Globals.dbContext.Products.ToList();
