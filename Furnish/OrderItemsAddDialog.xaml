@@ -20,9 +20,9 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Product Id" Width="130" DisplayMemberBinding="{Binding id}" />
-                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding name}" />
-                    <GridViewColumn Header="Quantity" Width="120" DisplayMemberBinding="{Binding qtyAvailable}" />
-                    <GridViewColumn Header="Price" Width="120" DisplayMemberBinding="{Binding price}" />
+                    <!--<GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding name}" />-->
+                    <GridViewColumn Header="Quantity" Width="120" DisplayMemberBinding="{Binding qty}" />
+                    <GridViewColumn Header="Price" Width="120" DisplayMemberBinding="{Binding salePrice}" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -34,7 +34,7 @@
                     <GridViewColumn Header="Product Id" Width="130" DisplayMemberBinding="{Binding id}" />
                     <GridViewColumn Header="Name" Width="130" DisplayMemberBinding="{Binding name}" />
                     <GridViewColumn Header="Stock" Width="120" DisplayMemberBinding="{Binding qtyAvailable}" />
-                    <GridViewColumn Header="Price" Width="120" DisplayMemberBinding="{Binding Price}" />
+                    <GridViewColumn Header="Price" Width="120" DisplayMemberBinding="{Binding price}" />
                 </GridView>
             </ListView.View>
         </ListView>

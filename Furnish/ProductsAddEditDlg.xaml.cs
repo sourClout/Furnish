@@ -1,7 +1,9 @@
-﻿using Azure.Storage.Blobs;
+using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Microsoft.Win32;
 using System;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
@@ -17,6 +19,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Path = System.IO.Path;
+
 
 namespace Furnish
 {

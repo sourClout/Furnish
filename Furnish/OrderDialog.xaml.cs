@@ -71,7 +71,7 @@ namespace Furnish
             
             Order selectedOrder = LvOrders.SelectedItem as Order;
             if (selectedOrder == null) return;
-            OrderItemsAddDialog orderItemsAddDialog = new OrderItemsAddDialog();
+            OrderItemsAddDialog orderItemsAddDialog = new OrderItemsAddDialog(selectedOrder);
             orderItemsAddDialog.Owner = this;
             if (orderItemsAddDialog.ShowDialog() == true)
             {
