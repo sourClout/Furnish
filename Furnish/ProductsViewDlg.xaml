@@ -8,7 +8,7 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
-        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
@@ -21,8 +21,10 @@
                 <Label Foreground="White" Margin="20,2" FontSize="20">Furnish</Label>
                 <Label Content="Search" FontSize="20" Foreground="White" Margin="478,4,330,0"   Width="91" />
                 <TextBox x:Name="TbxSearch" Foreground="White" Height="26" TextWrapping="Wrap" Text="" Width="240" TextChanged="TbxSearch_TextChanged"  DockPanel.Dock="Right" Margin="574,2,85,8" BorderBrush="White" />
-                
+
             </Grid>
+
+
 
 
         </Border>
@@ -33,6 +35,8 @@
         </StatusBar>
         <Border DockPanel.Dock="Left" BorderBrush="Gray" BorderThickness="0.5" Background="Black">
             <Grid Width="170" Margin="0,0,0,0" Background="#FFF1F0F3">
+
+
 
                 <Button Name="BtnAddProducts" HorizontalAlignment="Left" Margin="14,70,0,0" VerticalAlignment="Top" Width="140" Click="BtnAddProducts_Click">
                     <Grid Width="130">
@@ -53,17 +57,23 @@
                     </Grid>
                 </Button>
 
+
+
             </Grid>
         </Border>
         <Border>
             <Grid>
                 <ListView  Name="LvProd" SelectionChanged="LvProd_SelectionChanged" SelectionMode="Multiple" MouseDoubleClick="LvProd_MouseDoubleClick">
 
+
+
                     <ListView.Resources>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextWrapping" Value="Wrap"/>
                         </Style>
                     </ListView.Resources>
+
+
 
                     <ListView.View >
                         <GridView>
@@ -81,6 +91,8 @@
                             </GridViewColumn>
                         </GridView>
                     </ListView.View>
+
+
 
                 </ListView>
             </Grid>
