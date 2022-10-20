@@ -44,9 +44,9 @@
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
-                               HorizontalAlignment="Left" Margin="200,27,0,353" Width="174"/>
+                               HorizontalAlignment="Left" Margin="230,27,0,353" Width="174"/>
             <TextBlock Text="Welcome"
-                               Foreground="red"
+                               Foreground="IndianRed"
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"

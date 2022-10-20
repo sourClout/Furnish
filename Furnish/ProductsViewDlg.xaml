@@ -16,18 +16,15 @@
          WindowStartupLocation="CenterOwner"
         Title="ProductsViewDlg" Height="450" Width="900">
     <DockPanel>
-        <Border DockPanel.Dock="Top" BorderBrush="Gray" BorderThickness="0.5" Background="#FF8522Bd"  >
-            <Menu>
-                <MenuItem Header="_File" Foreground="White">
-                    <MenuItem Header="_Export"/>
-                    <MenuItem Header="_Open"/>
-                    <MenuItem Header="_Save"/>
-                    <Separator/>
-                    <MenuItem Header="_Exit"/>
-                </MenuItem>
-                <MenuItem Header="_Add Customer" Foreground="White"/>
-                <MenuItem Header="_Delete Customer" Foreground="White"/>
-            </Menu>
+        <Border DockPanel.Dock="Top" BorderBrush="Gray" BorderThickness="0.5" Background="#FF673AB7"  >
+            <Grid >
+                <Label Foreground="White" Margin="20,2" FontSize="20">Furnish</Label>
+                <Label Content="Search" FontSize="20" Foreground="White" Margin="478,4,330,0"   Width="91" />
+                <TextBox x:Name="TbxSearch" Foreground="White" Height="26" TextWrapping="Wrap" Text="" Width="240" TextChanged="TbxSearch_TextChanged"  DockPanel.Dock="Right" Margin="574,2,85,8" BorderBrush="White" />
+
+            </Grid>
+
+
 
 
         </Border>
@@ -66,7 +63,9 @@
         </Border>
         <Border>
             <Grid>
-                <ListView  Name="LvProd" SelectionChanged="LvProd_SelectionChanged" SelectionMode="Single" MouseDoubleClick="LvProd_MouseDoubleClick">
+                <ListView  Name="LvProd" SelectionChanged="LvProd_SelectionChanged" SelectionMode="Multiple" MouseDoubleClick="LvProd_MouseDoubleClick">
+
+
 
                     <ListView.Resources>
                         <Style TargetType="TextBlock">
