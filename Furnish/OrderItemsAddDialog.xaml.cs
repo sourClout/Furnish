@@ -39,7 +39,7 @@ namespace Furnish
             {
                 Globals.dbContext = new FurnishDbConnection();
                 LvItemsAvailable.ItemsSource = Globals.dbContext.Products.ToList();
-                LvOrderItems.ItemsSource = Globals.dbContext.OrderItems.ToList();
+                LvOrderItems.ItemsSource = Globals.dbContext.OrderItems.ToList().Where(x => x.orderId == currOrder.id);
             }
             catch (SystemException ex)
             {
@@ -82,8 +82,9 @@ namespace Furnish
                 
 
                 Globals.dbContext.SaveChanges(); // SystemException
-                LvOrderItems.ItemsSource = Globals.dbContext.OrderItems.ToList();
+                LvOrderItems.ItemsSource = Globals.dbContext.OrderItems.ToList().Where(x => x.orderId == currOrder.id);
                 LvItemsAvailable.ItemsSource = Globals.dbContext.Products.ToList();
+                
             }
             catch (SystemException ex)
             {
@@ -105,7 +106,9 @@ namespace Furnish
                 prodProduct.qtyAvailable += selectedOrderItem.qty;
                 Globals.dbContext.OrderItems.Remove(selectedOrderItem);
                 Globals.dbContext.SaveChanges();
-                LvOrderItems.ItemsSource = Globals.dbContext.OrderItems.ToList();
+                //LvOrderItems.ItemsSource = Globals.dbContext.OrderItems.ToList();
+
+                LvOrderItems.ItemsSource = Globals.dbContext.OrderItems.ToList().Where(x => x.orderId == currOrder.id);
                 LvItemsAvailable.ItemsSource = Globals.dbContext.Products.ToList();
             }
             catch (SystemException ex)
@@ -113,5 +116,6 @@ namespace Furnish
                 MessageBox.Show(this, "Unable to access the database:\n" + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
     }
 }
