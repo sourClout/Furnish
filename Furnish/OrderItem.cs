@@ -9,11 +9,14 @@
 
 namespace Furnish
 {
+    using ControlzEx.Standard;
     using System;
     using System.Collections.Generic;
     
     public partial class OrderItem
     {
+
+
         public int id { get; set; }
         public int productId { get; set; }
         public int orderId { get; set; }
@@ -22,5 +25,17 @@ namespace Furnish
     
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
+
+        public OrderItem(int _productId, int _orderId, int _qty, decimal _salePrice)
+        {
+            productId = _productId;
+            orderId = _orderId;
+            qty = _qty;
+            salePrice = _salePrice;
+        }
+
+        public OrderItem()
+        {
+        }
     }
 }

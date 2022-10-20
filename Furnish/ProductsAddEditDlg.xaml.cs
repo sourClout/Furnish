@@ -73,7 +73,7 @@ namespace Furnish
                     currProduct.qtyAvailable = (int)QuantitySlider.Value; // ArgumentException
                                                                           //currProduct.imageUrl = OpenFileDialog.FileName;
 
-                    currProduct.imageUrl = imageUrl;
+                   // currProduct.imageUrl = imageUrl;
 
 
 
@@ -83,7 +83,9 @@ namespace Furnish
                 { // add
                   //FIXME: Product has 5 fields due to IMAGE --> either add image or create new 4 field constructor
 
-                    Product newProduct = new Product(NameInput.Text, DescriptionInput.Text, imageUrl, decimal.Parse(PriceInput.Text), (int)QuantitySlider.Value);
+                    Product newProduct = new Product(NameInput.Text, DescriptionInput.Text, decimal.Parse(PriceInput.Text), (int)QuantitySlider.Value);
+
+//                  Product newProduct = new Product(NameInput.Text, DescriptionInput.Text, imageUrl, decimal.Parse(PriceInput.Text), (int)QuantitySlider.Value);
                     Globals.dbContext.Products.Add(newProduct); // ArgumentException
                 }
 
