@@ -13,7 +13,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
-        Title="MainWindow" Height="450" Width="600" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
+        Title="MainWindow" Height="480" Width="625" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
     <DockPanel>
         <Border DockPanel.Dock="Top" BorderBrush="Gray" BorderThickness="0.5" Background="#FF8522Bd"  >
             <Menu>
@@ -25,15 +25,16 @@
                     <MenuItem Header="_Exit"/>
                 </MenuItem>
             </Menu>
-
+            
         </Border>
+        
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
-                <TextBlock Name="TbkStatus"/>
+                <TextBlock x:Name="TbkStatus"/>
             </StatusBarItem>
         </StatusBar>
-        <Border DockPanel.Dock="Left" BorderBrush="Gray" BorderThickness="0.5" Background="Black">
-            <Grid Width="170" Margin="0,0,0,0" Background="#FFF1F0F3">
+        <Border DockPanel.Dock="Left" BorderBrush="Gray" BorderThickness="0.5" >
+            <Grid Width="170" Background="#FFF1F0F3" HorizontalAlignment="Left">
                 <Button Name="BtnCustomers" HorizontalAlignment="Left" Margin="14,70,0,0" VerticalAlignment="Top" Width="140" Click="BtnCustomers_Click">
                     <Grid Width="130">
                         <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center"/>
@@ -57,33 +58,21 @@
 
             </Grid>
         </Border>
-        <Border DockPanel.Dock="right" BorderBrush="Gray" BorderThickness="0.5" Background="Black" Height="366" >
-            <Grid Background="#FFF1F0F3" Width="429">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="61*"/>
-                    <RowDefinition Height="304*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="58*"/>
-                    <ColumnDefinition Width="342*"/>
-                    <ColumnDefinition Width="12*"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="16*"/>
-                </Grid.ColumnDefinitions>
-
-                <Button  Name="BtnLogin" HorizontalAlignment="Left" Margin="6,259,0,0" VerticalAlignment="Top" Width="140" Click="BtnLogin_Click" Grid.Row="1" Grid.Column="1" Height="32">
+        <Border DockPanel.Dock="right" BorderBrush="Gray" BorderThickness="0.5">
+            <Grid  Background="#FFF1F0F3">
+                <Button  Name="BtnLogin"  HorizontalAlignment="Left"  Margin="50,0, 0 20" VerticalAlignment="Bottom" Width="140" Click="BtnLogin_Click" Grid.Row="1" Grid.Column="1" Height="32">
                     <Grid Width="130">
                         <materialDesign:PackIcon Kind="Invoice" VerticalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Center" Text="Log in" />
+                        <TextBlock x:Name="Btxlogin" HorizontalAlignment="Center" Text="Login" />
                     </Grid>
                 </Button>
-                <Button  Name="BtnRegister" HorizontalAlignment="Left" Margin="170,259,0,0" VerticalAlignment="Top" Width="140" Click="BtnRegister_Click" Grid.Column="1" Grid.Row="1" Height="32">
+                <Button  Name="BtnRegister" HorizontalAlignment="Right" Margin="0,0,50,20" VerticalAlignment="Bottom" Width="140" Click="BtnRegister_Click"  Height="32">
                     <Grid Width="130">
                         <materialDesign:PackIcon Kind="Invoice" VerticalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center" Text="Register" />
                     </Grid>
                 </Button>
-                <ListView Name="LvUsers" Margin="0,19,0,69"  Background="white" Grid.RowSpan="2" MouseDoubleClick="LvUsers_MouseDoubleClick" SelectionMode="Single" HorizontalAlignment="Center" Grid.Column="1" Width="410">
+                <ListView Name="LvUsers"   Background="white"  MouseDoubleClick="LvUsers_MouseDoubleClick" SelectionMode="Single" HorizontalAlignment="Center" Margin="0,0,0,72"  >
                     <ListView.ContextMenu>
                         <ContextMenu>
                             <MenuItem Header="Edit" Click="MenuItem_ListEditItemClick"/>
@@ -107,6 +96,7 @@
                 </ListView>
             </Grid>
         </Border>
+     
         <!--SelectionChanged="LvUsers_SelectionChanged"-->
 
 

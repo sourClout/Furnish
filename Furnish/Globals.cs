@@ -8,6 +8,8 @@ namespace Furnish
 {
     public class Globals
     {
+
         public static FurnishDbConnection dbContext;
+       
     }
 }
