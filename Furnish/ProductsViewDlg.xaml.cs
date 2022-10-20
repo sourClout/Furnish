@@ -61,7 +61,7 @@ namespace Furnish
         {
             Product currSelectedProduct = LvProd.SelectedItem as Product;
             if (currSelectedProduct == null) return; // nothing selected
-            ProductsAddEditDlg dlg = new ProductsAddEditDlg(currSelectedProduct);
+            ProductsAddEditDlg dlg = new ProductsAddEditDlg();
             dlg.Owner = this;
             if (dlg.ShowDialog() == true)
             {
