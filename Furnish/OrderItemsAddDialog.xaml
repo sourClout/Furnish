@@ -19,7 +19,7 @@
         <ListView Name="LvOrderItems" HorizontalAlignment="Left" Height="263" Margin="10,75,0,0" VerticalAlignment="Top" Width="510" SelectionChanged="LvOrderItems_SelectionChanged" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Product Id" Width="130" DisplayMemberBinding="{Binding id}" />
+                    <GridViewColumn Header="Product Id" Width="130" DisplayMemberBinding="{Binding productId}" />
                     <!--<GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding name}" />-->
                     <GridViewColumn Header="Quantity" Width="120" DisplayMemberBinding="{Binding qty}" />
                     <GridViewColumn Header="Price" Width="120" DisplayMemberBinding="{Binding salePrice}" />
@@ -38,9 +38,11 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <Button Name="BtnRemove" Content="Remove" HorizontalAlignment="Left" Margin="34,361,0,0" VerticalAlignment="Top" Width="140" Height="30" Click="BtnRemove_Click" />
         <Label Content="Quantity requested:" FontSize="16" HorizontalAlignment="Left" Margin="655,370,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.216,0.043" Width="150"/>
         <TextBox Name="TbxQty" HorizontalAlignment="Left" Height="26" Margin="810,371,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" />
-        <Button Name="btnAddToOrder" IsDefault="True" Click="btnAddToOrder_Click"  Width="115" Margin="904,362,180,40">Add to Order</Button>
+        <Button Name="btnAddToOrder" IsDefault="True" Click="btnAddToOrder_Click"  Width="115" Margin="920,365,175,47">Add to Order</Button>
         <Button IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Margin="1065,365,0,0" VerticalAlignment="Top" Width="115"/>
 
     </Grid>
