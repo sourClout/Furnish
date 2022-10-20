@@ -138,3 +138,25 @@
  - create add items to order dialog
 3. Need assistance / figure things out
 - joined queries
+
+2022/10/20 Alex
+1. Done / not done since last scrum:
+- Helped finish loading and displaying images from DB
+- cleaned up design and verified and fixed bugs
+2. To do until next Scrum:
+3. Need assistance / figure things out
+
+2022/10/20 Anton
+1. Done / not done since last scrum:
+ - Improved functionality and fixed bugs in Orders system
+2. To do until next Scrum:
+3. Need assistance / figure things out
+
+2022/10/20 Xin
+1. Done / not done since last scrum:
+- Helped finish loading and displaying images from DB
+- Helped improve functionality of order system
+2. To do until next Scrum:
+3. Need assistance / figure things out
+
+
