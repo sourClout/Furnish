@@ -1,9 +1,11 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using System.Xml.Linq;
+
 
 namespace Furnish
 {
@@ -91,6 +93,33 @@ namespace Furnish
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            /*
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            
+            if (dlg.ShowDialog() == true)
+            {
+                FileStream imageStream = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read);
+
+                byte[] iBytes = new byte[imageStream.Length + 1];
+            }
+            /*
+           
+            /*
+            using (FilesEntities entities = new FilesEntities())
+            {
+                tblFile file = new tblFile
+                {
+                    Name = Path.GetFileName(fuUploadFile.PostedFile.FileName),
+                    ContentType = fuUploadFile.PostedFile.ContentType,
+                    Data = fuUploadFile.FileBytes,
+                };
+                entities.AddTotblFiles(file);
+                entities.SaveChanges();
+            }
+            */
+
+
+            /*
             OpenFileDialog openDialog = new OpenFileDialog();
             openDialog.Filter = "Images files|*.bmp;*.jpg;*.png";
             openDialog.FilterIndex = 1;
@@ -99,7 +128,10 @@ namespace Furnish
                 Uri fileUri = new Uri(openDialog.FileName);
                 imagePic.Source = new BitmapImage(fileUri);
             }
+            */
         }
+
+
 
         private bool AreProductInputsValid()
         {
