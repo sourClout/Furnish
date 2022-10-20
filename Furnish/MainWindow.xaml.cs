@@ -38,7 +38,30 @@ namespace Furnish
             
         }
 
-    private void BtnOrders_Click(object sender, RoutedEventArgs e)
+        private void btnMinimized_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+        private void btnMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                
+                this.WindowState = WindowState.Normal;
+
+                btnMaximize.Content = "☐";
+            }
+            else
+            {
+               
+                this.WindowState = WindowState.Maximized;
+
+                btnMaximize.Content = "[-]";
+            }
+        }
+
+
+        private void BtnOrders_Click(object sender, RoutedEventArgs e)
     {
             OrderDialog dialog = new OrderDialog();
             dialog.Owner = this;
@@ -191,6 +214,10 @@ namespace Furnish
             
         }
 
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
 

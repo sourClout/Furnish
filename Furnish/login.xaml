@@ -39,7 +39,7 @@
             <Label Content="User Name:" HorizontalAlignment="Left" Margin="195,133,0,0" VerticalAlignment="Top" FontSize="16"/>
             <Label Content="Password:" HorizontalAlignment="Left" Margin="195,197,0,0" VerticalAlignment="Top" FontSize="16"/>
             <Button Content="Login" HorizontalAlignment="Left" Margin="203,295,0,0" VerticalAlignment="Top" Width="150" Height="50" FontSize="16" Click="Button_Click"/>
-            <TextBlock Text="Furnish A.x.A"
+            <TextBlock Text="Furnish Store"
                                Foreground="red"
                                FontSize="25"
                                FontWeight="Medium"

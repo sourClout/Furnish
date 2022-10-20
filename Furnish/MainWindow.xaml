@@ -16,18 +16,125 @@
         Title="MainWindow" Height="480" Width="625" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
     <DockPanel>
         <Border DockPanel.Dock="Top" BorderBrush="Gray" BorderThickness="0.5" Background="#FF8522Bd"  >
-            <Menu>
-                <MenuItem Header="_File" Foreground="White">
+            <!--<Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition  Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                </Grid.ColumnDefinitions>
+            </Grid>-->
+            <Menu >
+                <MenuItem Header="_File" Foreground="White" Width="460">
                     <MenuItem Header="_Export"/>
                     <MenuItem Header="_Open"/>
                     <MenuItem Header="_Save"/>
                     <Separator/>
                     <MenuItem Header="_Exit"/>
                 </MenuItem>
+                <Grid Width="100">
+                    <Button  x:Name="btnMinimize"
+                         Background="DarkGray"
+                         BorderThickness="0"
+                         Content="-"
+                              Width="50"
+                         Foreground="Black"
+                         FontSize="16"
+                         Cursor="Hand"
+                         Click="btnMinimized_Click" Margin="-11,0,57,0"
+                         >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Red" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Blue"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18" CornerRadius="9" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button  x:Name="btnMaximize"
+                         
+                         Background="DarkGray"
+                         
+                         BorderThickness="5"
+                         Content="+"
+                             Width="50"
+                         Foreground="Black"
+                         FontSize="16"
+                         Cursor="Hand"
+                         Click="btnMaximize_Click" Margin="19,0,27,0"
+                         >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Red" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Blue"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18" CornerRadius="9" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button  x:Name="btnClose"
+                         
+                         Background="DarkGray"
+                         
+                         BorderThickness="5"
+                         Content="X"
+                             Width="50"
+                         Foreground="Black"
+                         FontSize="16"
+                         Cursor="Hand"
+                         Click="btnClose_Click" HorizontalAlignment="Left" Margin="53,0,0,0"
+                         >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Red" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Blue"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18" CornerRadius="9" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+
+
             </Menu>
-            
+
+
         </Border>
-        
+
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
                 <TextBlock x:Name="TbkStatus"/>
@@ -96,7 +203,7 @@
                 </ListView>
             </Grid>
         </Border>
-     
+
         <!--SelectionChanged="LvUsers_SelectionChanged"-->
 
 

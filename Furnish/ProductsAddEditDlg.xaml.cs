@@ -6,7 +6,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.IO;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,10 +71,13 @@ namespace Furnish
         private void BtSave_Click(object sender, RoutedEventArgs e)
         {
 
-
             try
-
             {
+                byte[] images = null;
+                FileStream Stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+                BinaryReader brs = new BinaryReader(Stream);
+                images = brs.ReadBytes((int)Stream.Length);
+
                 if (currProduct != null)
                 { 
                     currProduct.name = NameInput.Text; // ArgumentException
@@ -83,17 +86,12 @@ namespace Furnish
                     currProduct.price = decimal.Parse(PriceInput.Text);
                     //currProduct.price = PriceInput.Text; // ArgumentException
                     currProduct.qtyAvailable = (int)QuantitySlider.Value; // ArgumentException
+                    currProduct.image = images;
                     Globals.dbContext.SaveChanges();
                 }
                 else
                 { // add
                   //FIXME: Product has 5 fields due to IMAGE --> either add image or create new 4 field constructor
-                    byte[] images = null;
-                    FileStream Stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
-                    BinaryReader brs = new BinaryReader(Stream);
-                    images = brs.ReadBytes((int)Stream.Length);
-
-
                     con.Open();
                     string sqlQuery = "Insert into Products (name,description,price,qtyAvailable,image) values('" + NameInput.Text + "','" + DescriptionInput.Text + "','" + decimal.Parse(PriceInput.Text) + "','" + (int)QuantitySlider.Value + "', @images)";
 
@@ -118,48 +116,6 @@ namespace Furnish
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    OpenFileDialog openDialog = new OpenFileDialog();
-        //    openDialog.Filter = "Images files|*.bmp;*.jpg;*.png";
-        //    openDialog.FilterIndex = 1;
-        //    if (openDialog.ShowDialog()==true)
-        //    {
-        //        Uri fileUri = new Uri(openDialog.FileName);
-        //        imagePic.Source = new BitmapImage(fileUri);
-        //    }
-        //}
-        //private void uploadButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    OpenFileDialog openDialog = new OpenFileDialog();
-        //    openDialog.Filter = "Images files|*.bmp;*.jpg;*.png";
-        //    openDialog.FilterIndex = 1;
-        //    if (openDialog.ShowDialog() == true)
-        //    {
-        //        textBox.Text = openDialog.FileName;
-        //        Uri fileUri = new Uri(openDialog.FileName);
-        //        pictureBox1.Source = new BitmapImage(fileUri);
-        //    }
-        //}
-        //string connectionString = "<connection_string>";
-        //string containerName = "sample-container";
-        //string blobName = "sample-blob";
-        //string filePath = "sample-file";
-
-        //// Get a reference to a container named "sample-container" and then create it
-        //BlobContainerClient container = new BlobContainerClient(connectionString, containerName);
-        //container.Create();
-
-        //// Get a reference to a blob named "sample-file" in a container named "sample-container"
-        //BlobClient blob = container.GetBlobClient(blobName);
-
-        //// Upload local file
-        //blob.Upload(filePath);
-
-       
-
        
         }
     }

@@ -8,7 +8,7 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
-        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
@@ -28,8 +28,8 @@
                 <MenuItem Header="_Add Customer" Foreground="White"/>
                 <MenuItem Header="_Delete Customer" Foreground="White"/>
             </Menu>
-            
-            
+
+
         </Border>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
@@ -38,6 +38,8 @@
         </StatusBar>
         <Border DockPanel.Dock="Left" BorderBrush="Gray" BorderThickness="0.5" Background="Black">
             <Grid Width="170" Margin="0,0,0,0" Background="#FFF1F0F3">
+
+
 
                 <Button Name="BtnAddProducts" HorizontalAlignment="Left" Margin="14,70,0,0" VerticalAlignment="Top" Width="140" Click="BtnAddProducts_Click">
                     <Grid Width="130">
@@ -58,27 +60,40 @@
                     </Grid>
                 </Button>
 
+
+
             </Grid>
         </Border>
         <Border>
             <Grid>
                 <ListView  Name="LvProd" SelectionChanged="LvProd_SelectionChanged" SelectionMode="Single" MouseDoubleClick="LvProd_MouseDoubleClick">
-                    
-                <ListView.Resources>
-                <Style TargetType="TextBlock">
-                    <Setter Property="TextWrapping" Value="Wrap"/>
-                </Style>
-                </ListView.Resources>
 
-                <ListView.View >
-                    <GridView>
-                        <GridViewColumn Header="ID" Width="90" DisplayMemberBinding="{Binding id}" />
-                        <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding name}" />
-                        <GridViewColumn Header="Description" Width="130" DisplayMemberBinding="{Binding description}"  />
-                        <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding price}"  />
-                        <GridViewColumn Header="Quantity" Width="120" DisplayMemberBinding="{Binding qtyAvailable}"  />
-                    </GridView>
-                </ListView.View>        
+                    <ListView.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </ListView.Resources>
+
+
+
+                    <ListView.View >
+                        <GridView>
+                            <GridViewColumn Header="ID" Width="90" DisplayMemberBinding="{Binding id}" />
+                            <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding name}" />
+                            <GridViewColumn Header="Description" Width="130" DisplayMemberBinding="{Binding description}"  />
+                            <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding price}"  />
+                            <GridViewColumn Header="Quantity" Width="120" DisplayMemberBinding="{Binding qtyAvailable}"  />
+                            <GridViewColumn Header="Image">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding image}" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill"  Width="64" Height="64" VerticalAlignment="Top" Margin="0,0,0,0" HorizontalAlignment="Center"  />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+
+
 
                 </ListView>
             </Grid>
