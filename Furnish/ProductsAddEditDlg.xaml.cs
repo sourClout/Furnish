@@ -37,7 +37,7 @@ namespace Furnish
                 //Converting decimal to string 
                 PriceInput.Text = currProduct.price.ToString();
                 QuantitySlider.Value = currProduct.qtyAvailable;
-                
+
                 //ImageInput.Text = currProduct.imageUrl;
                 BtSave.Content = "update";
             }
@@ -50,10 +50,10 @@ namespace Furnish
 
         private void BtSave_Click(object sender, RoutedEventArgs e)
         {
-            
+
 
             try
-                
+
             {
 
                 File.Copy(textBox.Text, Path.Combine(@"C:\Users\shift\Documents\GitHub\ApplicationDevelopment\Furnish\Furnish\Furnish\image\", Path.GetFileName(textBox.Text)), true);
@@ -64,7 +64,7 @@ namespace Furnish
                 // FIXME: due date may be null
                 if (currProduct != null)
                 { // update
-                   
+
                     currProduct.name = NameInput.Text; // ArgumentException
                     currProduct.description = DescriptionInput.Text; // ArgumentException
                     // Must convert string to decimal

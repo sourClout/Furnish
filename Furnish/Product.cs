@@ -11,9 +11,7 @@ namespace Furnish
 {
     using System;
     using System.Collections.Generic;
-    using System.Data.SqlTypes;
-    using System.Windows.Media;
-
+    
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,29 +23,25 @@ namespace Furnish
         public int id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public string imageUrl { get; set; }
         public decimal price { get; set; }
         public int qtyAvailable { get; set; }
+        public byte[] image { get; set; }
 
-        
-
-        //public ImageSource image { get; set; }
-
-        public Product(string _name, string _description, string _imageUrl, decimal _price, int _qtyAvailable)
+        public Product(string name, string description, decimal price, int qtyAvailable, byte[] image)
         {
-            this.name = _name;
-            this.description = _description;
-            this.imageUrl = _imageUrl;
-            this.price = _price;
-            this.qtyAvailable = _qtyAvailable;
+            this.name = name;
+            this.description = description;
+            this.price = price;
+            this.qtyAvailable = qtyAvailable;
+            this.image = image;
         }
 
-        public Product(string _name, string _description, decimal _price, int _qtyAvailable)
+        public Product(string name, string description, decimal price, int qtyAvailable)
         {
-            this.name = _name;
-            this.description = _description;
-            this.price = _price;
-            this.qtyAvailable = _qtyAvailable;
+            this.name = name;
+            this.description = description;
+            this.price = price;
+            this.qtyAvailable = qtyAvailable;
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

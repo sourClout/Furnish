@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
@@ -12,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace Furnish
 {
@@ -70,17 +73,57 @@ namespace Furnish
 
         private void BtnDeleteProducts_Click(object sender, RoutedEventArgs e)
         {
-
+            Product currSelectedProduct = LvProd.SelectedItem as Product;
+            if (currSelectedProduct == null) return;
+            var result = MessageBox.Show(this, "Are you sure you want to delete this product?", "Confirm deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result != MessageBoxResult.Yes) return;
+            try
+            {
+                Globals.dbContext.Products.Remove(currSelectedProduct);
+                Globals.dbContext.SaveChanges();
+                LvProd.ItemsSource = Globals.dbContext.Products.ToList();
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Unable to access the database:\n" + ex.Message, "Database error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void LvProd_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            disableButtons();
         }
 
         private void BtnSaveProducts_Click(object sender, RoutedEventArgs e)
         {
+            SaveFileDialog saveIt = new SaveFileDialog();
+            saveIt.Filter = "Text file (*.csv)|*.csv|All files (*.*)|*.*";
+            if (saveIt.ShowDialog() != true) return;
 
+            // List<Trip> tripExport = Globals.DbContext.Travels.ToList();
+            List<string> lines = new List<string>();
+            foreach (Product p in LvProd.SelectedItems)
+            {
+                lines.Add($"{p.id};{p.name};{p.description};{p.price};{p.qtyAvailable}");
+            }
+            try
+            {
+                File.WriteAllLines(saveIt.FileName, lines);
+                MessageBox.Show(this, "Export successful!", "Export Status", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex) when (ex is IOException || ex is SystemException)
+            {
+                MessageBox.Show(this, "Export failed\n" + ex.Message, "Export Status", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
+
+        private void disableButtons()
+        {
+            Product currSelectedProduct = LvProd.SelectedItem as Product;
+            BtnDeleteProducts.IsEnabled = (currSelectedProduct != null);
+        }
+
+       
     }
 }

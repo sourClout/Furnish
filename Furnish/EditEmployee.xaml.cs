@@ -69,11 +69,12 @@ namespace Furnish
 
                 try
                 {
-                    if ((string)App.Current.Properties[1] == currEmp.name) { 
-                    // Globals.dbContext.ChangeTracker.
-                    currEmp.name = TbxUserName.Text;
-                    currEmp.email = TbxEmail.Text;
-                    currEmp.role = (RoleEnum)Enum.Parse(typeof(RoleEnum), ComRole.Text);
+                    if ((string)App.Current.Properties[1] == currEmp.name)
+                    {
+                        // Globals.dbContext.ChangeTracker.
+                        currEmp.name = TbxUserName.Text;
+                        currEmp.email = TbxEmail.Text;
+                        currEmp.role = (RoleEnum)Enum.Parse(typeof(RoleEnum), ComRole.Text);
 
 
                         App.Current.Properties[1] = currEmp.name;

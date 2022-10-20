@@ -40,10 +40,9 @@ namespace Furnish
 
     private void BtnOrders_Click(object sender, RoutedEventArgs e)
     {
-
-        
-
-    
+            OrderDialog dialog = new OrderDialog();
+            dialog.Owner = this;
+            dialog.ShowDialog();
     }
 
  
@@ -144,10 +143,12 @@ namespace Furnish
                 LvUsers.ItemsSource = GetList();
                 TbkStatus.Text = "Employee updated";
             }
+            /*
             else
             {
                 //LvUsers.ItemsSource = currEmp;
             }
+            */
         }
 
         private void MenuItem_FileExitClick(object sender, RoutedEventArgs e)
@@ -172,7 +173,6 @@ namespace Furnish
             
             
         }
-
 
     }
 }
