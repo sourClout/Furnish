@@ -1,24 +1,11 @@
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
-using Microsoft.Win32;
+
 using System;
 using System.IO;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Path = System.IO.Path;
-
+using System.Data.SqlClient;
+using Microsoft.Win32;
+using System.Windows.Media.Imaging;
 
 namespace Furnish
 {
@@ -76,7 +63,7 @@ namespace Furnish
                     currProduct.qtyAvailable = (int)QuantitySlider.Value; // ArgumentException
                                                                           //currProduct.imageUrl = OpenFileDialog.FileName;
 
-                    currProduct.imageUrl = imageUrl;
+                    //currProduct.imageUrl = imageUrl;
 
 
 
@@ -86,7 +73,7 @@ namespace Furnish
                 { // add
                   //FIXME: Product has 5 fields due to IMAGE --> either add image or create new 4 field constructor
 
-                    Product newProduct = new Product(NameInput.Text, DescriptionInput.Text, imageUrl, decimal.Parse(PriceInput.Text), (int)QuantitySlider.Value);
+                    Product newProduct = new Product(NameInput.Text, DescriptionInput.Text, decimal.Parse(PriceInput.Text), (int)QuantitySlider.Value);
                     Globals.dbContext.Products.Add(newProduct); // ArgumentException
                 }
 
@@ -117,8 +104,28 @@ namespace Furnish
         //        imagePic.Source = new BitmapImage(fileUri);
         //    }
         //}
+
+        //("Data Source=.;Initial Catalog=Furnish;Integrated Security=True;Pooling=False");
+        //SqlConnection connection = new SqlConnection(@"Data Source = |DataDirectory|\Furnish.sdf");
+        //SqlCommand cmd;
+        /*
         private void uploadButton_Click(object sender, RoutedEventArgs e)
         {
+            
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)|*.*";
+            if(dialog.ShowDialog()== true)
+            {
+                //imgLocation = dialog.FileName.ToString();
+                //pictureBox1.Source = imgLocation;
+                textBox.Text = dialog.FileName;
+                Uri fileUri = new Uri(dialog.FileName);
+                pictureBox1.Source = new BitmapImage(fileUri);
+
+            }
+        */
+            
+
             /*
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             
@@ -156,7 +163,7 @@ namespace Furnish
                 pictureBox1.Source = new BitmapImage(fileUri);
             }
             */
-        }
+        } 
 
 
 
