@@ -14,7 +14,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d" ResizeMode="NoResize"
          WindowStartupLocation="CenterOwner"
-        Title="ProductsAddEditDlg" Height="450" Width="350">
+        Title="ProductsAddEditDlg" Height="460" Width="350">
     <Grid>
         <materialDesign:PackIcon Kind="Account" Margin="15,44,0,0" Height="22" Width="18"/>
         <Label Content="Name:" HorizontalAlignment="Left" Margin="38,44,0,0" VerticalAlignment="Top"  />
@@ -41,7 +41,7 @@
         <Grid>
             <Button Content="Click to Upload"  Width="100" Height="100" Margin="120,227,80,57" FontSize="10" Background="LightGray" BorderBrush="Purple" Click="Button_Click"/>
             <Image x:Name="pictureBox1" Stretch="Uniform" Height="100" Margin="145,252,105,0" VerticalAlignment="Top" Width="100"/>
-            <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="20,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104"/>
+           
         </Grid>
 
     </Grid>

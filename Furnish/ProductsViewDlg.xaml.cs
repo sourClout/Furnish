@@ -23,6 +23,7 @@ namespace Furnish
     /// </summary>
     public partial class ProductsViewDlg : Window
     {
+        const string DataFileName = @"..\..\..\products.csv";
         public ProductsViewDlg()
         {
             InitializeComponent();
@@ -35,6 +36,7 @@ namespace Furnish
                 Globals.dbContext = new FurnishDbConnection();
                 LvProd.ItemsSource = Globals.dbContext.Products.ToList();
                 TbkStatus.Text = "Data loaded";
+                disableButtons();
 
             }
             catch (SystemException ex)
@@ -61,7 +63,7 @@ namespace Furnish
         {
             Product currSelectedProduct = LvProd.SelectedItem as Product;
             if (currSelectedProduct == null) return; // nothing selected
-            ProductsAddEditDlg dlg = new ProductsAddEditDlg();
+            ProductsAddEditDlg dlg = new ProductsAddEditDlg(currSelectedProduct);
             dlg.Owner = this;
             if (dlg.ShowDialog() == true)
             {
@@ -91,29 +93,31 @@ namespace Furnish
 
         private void LvProd_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //Product currSelectedProduct = LvProd.SelectedItem as Product;
+            //BtnDeleteProducts.IsEnabled = (currSelectedProduct != null);
+            //BtnSaveProducts.IsEnabled = (currSelectedProduct != null);
             disableButtons();
         }
 
         private void BtnSaveProducts_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog saveIt = new SaveFileDialog();
-            saveIt.Filter = "Text file (*.csv)|*.csv|All files (*.*)|*.*";
-            if (saveIt.ShowDialog() != true) return;
+           
+            SaveDataToFile();
 
-            // List<Trip> tripExport = Globals.DbContext.Travels.ToList();
-            List<string> lines = new List<string>();
-            foreach (Product p in LvProd.SelectedItems)
+        }
+
+        private void TbxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var tbx = sender as TextBox;
+            if (tbx.Text != "")
             {
-                lines.Add($"{p.id};{p.name};{p.description};{p.price};{p.qtyAvailable}");
+                var filteredList = Globals.dbContext.Products.ToList().Where(x => x.name.ToLower().Contains(tbx.Text.ToLower()));
+                LvProd.ItemsSource = null;
+                LvProd.ItemsSource = filteredList;
             }
-            try
+            else
             {
-                File.WriteAllLines(saveIt.FileName, lines);
-                MessageBox.Show(this, "Export successful!", "Export Status", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (Exception ex) when (ex is IOException || ex is SystemException)
-            {
-                MessageBox.Show(this, "Export failed\n" + ex.Message, "Export Status", MessageBoxButton.OK, MessageBoxImage.Error);
+                LvProd.ItemsSource = Globals.dbContext.Products.ToList();
             }
         }
 
@@ -122,8 +126,28 @@ namespace Furnish
         {
             Product currSelectedProduct = LvProd.SelectedItem as Product;
             BtnDeleteProducts.IsEnabled = (currSelectedProduct != null);
+            BtnSaveProducts.IsEnabled = (currSelectedProduct != null);
         }
 
-       
+        private void SaveDataToFile()
+        {
+
+            List<string> lines = new List<string>();
+            foreach (Product p in LvProd.SelectedItems)
+            {
+                lines.Add($"{p.id};{p.name};{p.description};{p.price}; {p.qtyAvailable} ");
+            }
+            try
+            {
+                File.WriteAllLines(DataFileName, lines);
+            }
+            catch (Exception ex) when (ex is IOException || ex is SystemException)
+            {
+                MessageBox.Show(this, "Error reading from file\n" + ex.Message, "File access error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            MessageBox.Show(this, "Data saved to file", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+
     }
 }

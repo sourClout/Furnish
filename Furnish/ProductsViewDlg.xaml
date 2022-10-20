@@ -16,20 +16,15 @@
          WindowStartupLocation="CenterOwner"
         Title="ProductsViewDlg" Height="450" Width="900">
     <DockPanel>
-        <Border DockPanel.Dock="Top" BorderBrush="Gray" BorderThickness="0.5" Background="#FF8522Bd"  >
-            <Menu>
-                <MenuItem Header="_File" Foreground="White">
-                    <MenuItem Header="_Export"/>
-                    <MenuItem Header="_Open"/>
-                    <MenuItem Header="_Save"/>
-                    <Separator/>
-                    <MenuItem Header="_Exit"/>
-                </MenuItem>
-                <MenuItem Header="_Add Customer" Foreground="White"/>
-                <MenuItem Header="_Delete Customer" Foreground="White"/>
-            </Menu>
-            
-            
+        <Border DockPanel.Dock="Top" BorderBrush="Gray" BorderThickness="0.5" Background="#FF673AB7"  >
+            <Grid >
+                <Label Foreground="White" Margin="20,2" FontSize="20">Furnish</Label>
+                <Label Content="Search" FontSize="20" Foreground="White" Margin="478,4,330,0"   Width="91" />
+                <TextBox x:Name="TbxSearch" Foreground="White" Height="26" TextWrapping="Wrap" Text="" Width="240" TextChanged="TbxSearch_TextChanged"  DockPanel.Dock="Right" Margin="574,2,85,8" BorderBrush="White" />
+                
+            </Grid>
+
+
         </Border>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
@@ -62,23 +57,30 @@
         </Border>
         <Border>
             <Grid>
-                <ListView  Name="LvProd" SelectionChanged="LvProd_SelectionChanged" SelectionMode="Single" MouseDoubleClick="LvProd_MouseDoubleClick">
-                    
-                <ListView.Resources>
-                <Style TargetType="TextBlock">
-                    <Setter Property="TextWrapping" Value="Wrap"/>
-                </Style>
-                </ListView.Resources>
+                <ListView  Name="LvProd" SelectionChanged="LvProd_SelectionChanged" SelectionMode="Multiple" MouseDoubleClick="LvProd_MouseDoubleClick">
 
-                <ListView.View >
-                    <GridView>
-                        <GridViewColumn Header="ID" Width="90" DisplayMemberBinding="{Binding id}" />
-                        <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding name}" />
-                        <GridViewColumn Header="Description" Width="130" DisplayMemberBinding="{Binding description}"  />
-                        <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding price}"  />
-                        <GridViewColumn Header="Quantity" Width="120" DisplayMemberBinding="{Binding qtyAvailable}"  />
-                    </GridView>
-                </ListView.View>        
+                    <ListView.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </ListView.Resources>
+
+                    <ListView.View >
+                        <GridView>
+                            <GridViewColumn Header="ID" Width="90" DisplayMemberBinding="{Binding id}" />
+                            <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding name}" />
+                            <GridViewColumn Header="Description" Width="130" DisplayMemberBinding="{Binding description}"  />
+                            <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding price}"  />
+                            <GridViewColumn Header="Quantity" Width="120" DisplayMemberBinding="{Binding qtyAvailable}"  />
+                            <GridViewColumn Header="Image">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding image}" RenderOptions.BitmapScalingMode="Fant" Stretch="Fill"  Width="64" Height="64" VerticalAlignment="Top" Margin="0,0,0,0" HorizontalAlignment="Center"  />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
 
                 </ListView>
             </Grid>

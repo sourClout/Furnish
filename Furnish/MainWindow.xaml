@@ -15,16 +15,8 @@
         WindowStartupLocation="CenterScreen" 
         Title="MainWindow" Height="480" Width="625" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
     <DockPanel>
-        <Border DockPanel.Dock="Top" BorderBrush="Gray" BorderThickness="0.5" Background="#FF8522Bd"  >
-            <Menu>
-                <MenuItem Header="_File" Foreground="White">
-                    <MenuItem Header="_Export"/>
-                    <MenuItem Header="_Open"/>
-                    <MenuItem Header="_Save"/>
-                    <Separator/>
-                    <MenuItem Header="_Exit"/>
-                </MenuItem>
-            </Menu>
+        <Border DockPanel.Dock="Top" BorderBrush="Gray" BorderThickness="0.5" Background="#FF673AB7"  >
+            <Label Foreground="White" Margin="20,2" FontSize="20">Furnish</Label>
             
         </Border>
         
