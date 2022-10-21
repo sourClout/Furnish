@@ -12,8 +12,8 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         xmlns:local="clr-namespace:Furnish"
-        mc:Ignorable="d" ResizeMode="NoResize" Loaded="Window_Loaded"
-        Title="OrderItemsAddDialog" Height="500" Width="1210">
+        mc:Ignorable="d" ResizeMode="CanResize" Loaded="Window_Loaded"
+        Title="OrderItemsAddDialog" Height="520" Width="1230">
     <Grid>
         <Label Content="Order Items" FontSize="20" HorizontalAlignment="Left" Margin="34,25,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.216,0.043" Width="200"/>
         <ListView Name="LvOrderItems" HorizontalAlignment="Left" Height="263" Margin="10,75,0,0" VerticalAlignment="Top" Width="510" SelectionChanged="LvOrderItems_SelectionChanged" >
@@ -39,10 +39,10 @@
             </ListView.View>
         </ListView>
         
-        <Button Name="BtnRemove" Content="Remove" HorizontalAlignment="Left" Margin="34,361,0,0" VerticalAlignment="Top" Width="140" Height="30" Click="BtnRemove_Click" />
-        <Label Content="Quantity requested:" FontSize="16" HorizontalAlignment="Left" Margin="655,370,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.216,0.043" Width="150"/>
-        <TextBox Name="TbxQty" HorizontalAlignment="Left" Height="26" Margin="810,371,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" />
-        <Button Name="btnAddToOrder" IsDefault="True" Click="btnAddToOrder_Click"  Width="115" Margin="830,364,265,68">Add to Order</Button>
-        <Button IsCancel="True" Content="Cancel"  Margin="973,366,122,66"  Width="115"/>
+        <Button Name="BtnRemove" Content="Remove" HorizontalAlignment="Left" Margin="34,377,0,0" VerticalAlignment="Top" Width="115" Height="33" Click="BtnRemove_Click" />
+        <Label Content="Quantity requested:" FontSize="16" HorizontalAlignment="Left" Margin="577,376,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.216,0.043" Width="150"/>
+        <TextBox Name="TbxQty" HorizontalAlignment="Left" Height="26" Margin="740,374,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="50" />
+        <Button Name="btnAddToOrder" IsDefault="True" Click="btnAddToOrder_Click"  Width="115" Height="33" Margin="830,376,265,76" VerticalAlignment="Top" HorizontalAlignment="Left">Add to Order</Button>
+        <Button IsCancel="True" Content="Cancel"  Margin="973,376,122,76"  Width="115" Height="33" VerticalAlignment="Top" HorizontalAlignment="Left"/>
     </Grid>
 </Window>

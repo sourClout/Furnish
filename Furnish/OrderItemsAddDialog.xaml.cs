@@ -98,7 +98,7 @@ namespace Furnish
         {
             OrderItem selectedOrderItem = LvOrderItems.SelectedItem as OrderItem;
             if (selectedOrderItem == null) return;
-            var result = MessageBox.Show(this, "Are you sure you want to delete this customer?", "Confirm deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var result = MessageBox.Show(this, "Are you sure you want to delete this order item?", "Confirm deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result != MessageBoxResult.Yes) return;
             try
             {
