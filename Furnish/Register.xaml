@@ -41,7 +41,7 @@
                     <RowDefinition Height="249*"/>
                 </Grid.RowDefinitions>
                 <materialDesign:PackIcon Kind="Email" Margin="50,-18,0,0" Grid.Row="1" />
-                <TextBox  x:Name="TbxEmail" HorizontalAlignment="Left" Margin="50,-26,-50,0" Padding="20,4,0,0"  VerticalAlignment="Top" Width="154" Height="30" Grid.Row="1"/>
+                <TextBox  x:Name="TbxEmail" HorizontalAlignment="Left" Margin="50,-26,-50,0" Padding="20,4,0,0"  VerticalAlignment="Top" Width="220" Height="30" Grid.Row="1"/>
 
             </Grid>
 
